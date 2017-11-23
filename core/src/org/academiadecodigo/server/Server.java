@@ -37,8 +37,6 @@ public class Server {
 
             acceptClient();     //accepts 2 players
 
-            broadcast("foda-SSSSse"); // broadcast test
-
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,5 +1,7 @@
 package org.academiadecodigo.server;
 
+import org.academiadecodigo.events.EventType;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,8 +26,23 @@ public class ClientListener implements Runnable {
 
     public void interpretMessage(String message) {
 
-    }
+        String[] arguments = message.split(" ");
+        EventType event = EventType.values()[Integer.parseInt(arguments[0])];
 
+        switch (event) {
+            case START:
+                break;
+
+            case PLAYER_MOVE:
+                break;
+
+            case OBJECT_SPAWN:
+                break;
+
+            default:
+                System.out.println("Unknown event");
+        }
+    }
 
 
     @Override
@@ -33,8 +50,6 @@ public class ClientListener implements Runnable {
 
         listen();
     }
-
-
 
 
     public void listen() {
@@ -52,8 +67,7 @@ public class ClientListener implements Runnable {
 
                 interpretMessage(message);
             }
-        }
-        catch (IOException e){
+        } catch (IOException e) {
 
             e.printStackTrace();
         }
