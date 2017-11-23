@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" source="ficheiros_tmx/tile_relva.tmx"/>
+ <tileset firstgid="2145" source="ficheiros_tmx/telhados.tmx"/>
+ <tileset firstgid="3169" source="ficheiros_tmx/terreno.tmx"/>
+ <tileset firstgid="10155" source="ficheiros_tmx/terreno.tmx"/>
+ <tileset firstgid="17141" source="ficheiros_tmx/tile_arvore.tmx"/>
+ <layer name="background" width="50" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt2DEKwzAMheFk9KotV0lP30zNrdLBhVAiXBmpeibP8OOtkfgooZ0mHh4e7cwBPeW6rRbxzIhect1ey57P4rGJfmfPZ/HYRb+z56MHPaIrQR6l8dkRe2jP6/X45/y/1OtRvu7sRvp+RHigRQ+svDzWd48aPfI9sqMHVlaPBWBmD48lcRdx9DjvgmTT45E9s5eHxRvVAzW+P7AaxaP1u3MUj9Yeo3h8dvH+vwQtiwfCe0Lrjh7I0aO/A6Gl+a0=
+  </data>
+ </layer>
+ <layer name="backhouse" width="50" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztzssJgDAURNHsU1L6SRk2kW7zAd9exJUE9By465mUgDs9XxvRjFZ+d7tFx0MAAPBlJaq7TwAAAAC/cgKmOA1T
+  </data>
+ </layer>
+ <layer name="telhados" width="50" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt0SsOgDAQBuH6ospNQND7H4tHwqKqamqYNPMlv9/JpiSp58xtV+yOPfnvq5oSt6yge0bZwWIHix0sdrDYwWIHix0sZYKGz0z/sIPDDhY7WOxgsYPFDhY7WOxgsYNli4Y9diz91dgLo3wQrA==
+  </data>
+ </layer>
+ <layer name="chamine" width="50" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt0sENgDAMBMF7J5QAlQB1QydQDlTAg0TyxdqV8rUysiUi+ttcpaVG/6I9HF7h8AqHVzi8wuEVDq+yOKJbO87KsI8sd4XDKxxeRTuOIp2lfU6043oNdwJHr3B4hcMrHF7h8AqHV8M4pu+3vYZ9AMcDqWMOyA==
+  </data>
+ </layer>
+ <layer name="chamineesquerda" width="50" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztzzEOQEAQhlE1h+AcdEpaOmdRuDhTikZki93Ie8k39T9VBaTaXzryTQOgQGcdp8m9Il0bP3Q/+AMow3irj4Zoidacoz4aH03RHG05RwEAAACfXDb4Cbk=
+  </data>
+ </layer>
+ <layer name="grass" width="50" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt0sEJgDAABEHbUitQC7H/DvSRrySCJxJn4cgvZCDDIOmqvbKvVHsnx7txcCTi4EjEwZGIoz/HeG5q2N1a7pvLnnAs59aG3a3lvq2c/hVHIg6ORBwciTg4EnFwJOLgSPQXRy8dZ53rWA==
+  </data>
+ </layer>
+ <layer name="estrada" width="50" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt0sEJgEAMBdH0YDfagfYh2o8FG1DPElbcOcyDf8tlIBGS/rAP146XPXdUdrDYwWIHix0sdrDYwULu2Aq3X3eMuSm33mvRs2POLdHeUEX+qwo7WOxgsYPFDhY7WOxgsYPFDhY7WHp2nHjdBLw=
+  </data>
+ </layer>
+ <layer name="decorate" width="50" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztmEsKwkAMhiO4UGfpGdQjuHAhqKVn8SgKLnxd1MfGB5ihbqrUTHDqJJIPfupixuaD/qUtgGEYVVwcwNW9H2+Yuwv/nyXjnPNukQVjz8EVObry7xPmzJiTom6PX+E9ho2wtd7Br5XqMQ70gOdaqR45wyMX7MHFPOqD03OA/+95M9ZAgbyez3ouC++xYu6R6rFn7pHqwUWiR12MUg+gFO515e8JEq8rroe/J0j1sOeSMq0MoI3pZDEm4xHzuaSH8/cxg0QeXKo8Jjj/FDNT7pESLT2nuqflOwPVPS3vH1T3vunHr98BP2E9l4WWnlNo6TlFzH6k7L31XBZaer4msgN+z7d43BAJ5QHLmFNT
+  </data>
+ </layer>
+ <layer name="arvore" width="50" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt10dOw0AUxnGvQucStAQuAUwoF6At6HABqkRvO5BoCzpcAFjR4QJ0QucCdAihrflHYMmWWKDgcRjkT/ops8nMe1L8MtY0J06cOHHyl5MnNM3FZ4H4XOeLz7VqqaHmWtQJ81q19FPzAAaFeW1lXNZu921mqXkO88K8Vi2b1LyFbWFeq5ZLar7CtTCvfxOV54Ux/6UPO+deIWcUSTpH1tz7LvWc0YBGCWcZ554bHon9DLH3sKT9jXMvC9lhfE56Q/hO39enVXPPinSH8J0ey6v4eWTOSDvnr6wZGexBn4l29CFrRgb7kDkTjdFnooy7YbAPfSbK/h/RZ6KMu6Hx2bDj/ixrRhqfOxXvz3qMz104/kesendT+Z3MGLveyXbYfxd72McBfDjEEY5/eb5dd5Mb9r/FHe7xgEf48YSAIr8Hl1fTIhCJKEQjBrGIQ7w33BX+LAnUmYgkJCMFbniQijRF+kinzgxkQsCLLGQjB7mK9FFMnSUoRRnKUYFKVKFakT6aqLMZLWhFG9rRgU50KdLHCHWOYgzjmMAkpjCNGUX6WKDORSxhGStYxRrWsaFIHz7qPMQRjnGCU5zhHBeK9PFInX48IYBnvOAVb3gPcx8fAs24gQ==
+  </data>
+ </layer>
+</map>
