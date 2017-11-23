@@ -34,6 +34,7 @@ public class ClientListener implements Runnable {
                 break;
 
             case PLAYER_MOVE:
+                server.broadcast(message);
                 break;
 
             case OBJECT_SPAWN:
