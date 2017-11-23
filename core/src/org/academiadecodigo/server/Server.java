@@ -1,8 +1,9 @@
 package org.academiadecodigo.server;
 
+import org.academiadecodigo.events.Event;
+
 import java.io.IOException;
 import java.io.PrintStream;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -15,17 +16,16 @@ import java.util.concurrent.Executors;
  */
 public class Server {
 
-    private final int MAXPLAYERS = 2;
+    private final int MAX_PLAYERS = 2;
     private final int PORT = 9999;
-    private ArrayList<ClientListener> players;
     private ServerSocket serverSocket;
+    private Socket[] sockets;
     private ExecutorService cachedPool;
 
 
     public Server() {
-        this.players = new ArrayList<ClientListener>();
         cachedPool = Executors.newCachedThreadPool();
-
+        sockets = new Socket[MAX_PLAYERS];
     }
 
 
@@ -36,7 +36,6 @@ public class Server {
             serverSocket = new ServerSocket(PORT);
 
             acceptClient();     //accepts 2 players
-            submitPlayers();    //adds to threadpool
 
             broadcast("foda-SSSSse"); // broadcast test
 
@@ -49,45 +48,43 @@ public class Server {
     public void acceptClient() throws IOException {
 
 
-        while (players.size() < MAXPLAYERS) {
+        for (int i = 0; i < MAX_PLAYERS; i++) {
+
 
             Socket connection = serverSocket.accept();
+            sockets[i] = connection;
+
             ClientListener clientListener = new ClientListener(connection, this);
+            cachedPool.submit(clientListener);
 
             System.out.println("client accepted " + connection.getInetAddress().getHostName());
 
-            players.add(clientListener);
-
         }
     }
-
-    /**
-     *
-     * ADDING TO THREADPOOL
-     */
-    public void submitPlayers() {
-
-        for (ClientListener clientListener : players) {
-            cachedPool.submit(clientListener);
-        }
-        System.out.println("PLAYERS submited");
-    }
-
 
     public void sendMessageTo(Socket clientSocket, String message) throws IOException {
 
-        PrintStream out = new PrintStream((clientSocket.getOutputStream()),true);
+        PrintStream out = new PrintStream((clientSocket.getOutputStream()), true);
         out.println(message);
 
     }
 
+    public void broadcast(Event event) {
+        broadcast(event.toString());
+    }
 
-    public void broadcast(String message) throws IOException {
+    public void broadcast(String message) {
 
-        for (int i = 0; i < players.size(); i++) {
+        for (Socket s : sockets) {
 
-            PrintStream out = new PrintStream(players.get(i).getClientSocket().getOutputStream());
-            out.println(message);
+            try {
+
+                PrintStream out = new PrintStream(s.getOutputStream());
+                out.println(message);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
         }
     }
