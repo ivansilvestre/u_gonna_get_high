@@ -34,14 +34,15 @@ public class Server {
 
         try {
             serverSocket = new ServerSocket(PORT);
-            acceptClient();
-            submitPlayers();
-            broadcast("foda-SSSSse");
+
+            acceptClient();     //accepts 2 players
+            submitPlayers();    //adds to threadpool
+
+            broadcast("foda-SSSSse"); // broadcast test
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
     }
 
@@ -51,7 +52,7 @@ public class Server {
         while (players.size() < MAXPLAYERS) {
 
             Socket connection = serverSocket.accept();
-            ClientListener clientListener = new ClientListener(connection);
+            ClientListener clientListener = new ClientListener(connection, this);
 
             System.out.println("client accepted " + connection.getInetAddress().getHostName());
 
@@ -60,6 +61,10 @@ public class Server {
         }
     }
 
+    /**
+     *
+     * ADDING TO THREADPOOL
+     */
     public void submitPlayers() {
 
         for (ClientListener clientListener : players) {
@@ -71,8 +76,9 @@ public class Server {
 
     public void sendMessageTo(Socket clientSocket, String message) throws IOException {
 
-        PrintStream out = new PrintStream((clientSocket.getOutputStream()));
+        PrintStream out = new PrintStream((clientSocket.getOutputStream()),true);
         out.println(message);
+
     }
 
 
@@ -86,7 +92,10 @@ public class Server {
         }
     }
 
+
     public void generateGameObjects() {
+
+        //asks gamefactory to do somethings
 
     }
 
