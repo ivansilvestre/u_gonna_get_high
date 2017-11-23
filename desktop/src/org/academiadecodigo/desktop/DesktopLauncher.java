@@ -2,7 +2,7 @@ package org.academiadecodigo.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import org.academiadecodigo.GameLogic;
+import org.academiadecodigo.client.GameLogic;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
