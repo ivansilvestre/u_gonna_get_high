@@ -2,6 +2,8 @@ package org.academiadecodigo.server;
 
 import org.academiadecodigo.events.Event;
 import org.academiadecodigo.events.IdAssignEvent;
+import org.academiadecodigo.events.StartEvent;
+
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.ServerSocket;
@@ -34,6 +36,7 @@ public class Server {
             CreateRandomChore createRandomChore = new CreateRandomChore(this);
             CreateRandomWeed createRandomWeed = new CreateRandomWeed(this);
             acceptClients();     //accepts 2 players
+            broadcast(new StartEvent());
 
 
             new Thread(createRandomChore).start();

@@ -40,6 +40,8 @@ public class GameLogic extends Game {
     private List<Chore> chores;
     private List<Chore> enemyChores;
 
+    public static boolean started;
+
     public GameLogic() {
 
         weeds = new LinkedList<>();
@@ -47,6 +49,8 @@ public class GameLogic extends Game {
 
         chores = new LinkedList<>();
         enemyChores = new LinkedList<>();
+
+        started = false;
     }
 
     @Override
@@ -70,6 +74,14 @@ public class GameLogic extends Game {
 
     }
 
+    public void start() {
+        started = true;
+    }
+
+    public static boolean isStarted() {
+        return started;
+    }
+
     private void checkCollisions() {
 
         ListIterator<Weed> iterator = weeds.listIterator();
@@ -80,7 +92,6 @@ public class GameLogic extends Game {
             if (w.getSprite().getX() <= player.getSprite().getX() && w.getSprite().getX() + w.getSprite().getWidth() + 10 >= player.getSprite().getX() + 10 &&
                     w.getSprite().getY() <= player.getSprite().getY() && w.getSprite().getY() + 15 >= player.getSprite().getY()) {
 
-                System.out.println("123");
                 w.remove();
                 SoundEffects.playWeedPickUp();
                 iterator.remove();
@@ -96,7 +107,6 @@ public class GameLogic extends Game {
             if (w.getSprite().getX() <= player.getSprite().getX() && w.getSprite().getX() + w.getSprite().getWidth() + 10 >= player.getSprite().getX() + 10 &&
                     w.getSprite().getY() <= player.getSprite().getY() && w.getSprite().getY() + 15 >= player.getSprite().getY()) {
 
-                System.out.println("123");
                 w.remove();
 
                 choreIterator.remove();
@@ -124,6 +134,10 @@ public class GameLogic extends Game {
 
     @Override
     public void render() {
+
+        if (!started) {
+            return;
+        }
 
         checkCollisions();
 
@@ -208,4 +222,5 @@ public class GameLogic extends Game {
             }
         });
     }
+
 }
