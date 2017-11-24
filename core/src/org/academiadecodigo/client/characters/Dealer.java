@@ -16,17 +16,19 @@ public class Dealer extends Character{
 
     private int speed;
     private volatile boolean stopMovement = false;
-
+    private int rotation = 0;
     public Dealer() {
 
         super(new Sprite(new Texture(Gdx.files.internal("gorro.png"))));
         speed = 2;
         initialPositioning();
+
     }
 
     private void initialPositioning() {
 
         getSprite().setPosition( 500 - 25 , Gdx.graphics.getHeight() );
+
     }
 
     @Override
@@ -44,10 +46,13 @@ public class Dealer extends Character{
             return;
         }
 
-        if(getSprite().getY() > Gdx.graphics.getHeight() || getSprite().getY()+getSprite().getHeight() < 0) {
+        if(getSprite().getY() > Gdx.graphics.getHeight() || getSprite().getY()  < 0) {
 
             speed = speed * -1;
             stopMovement = true;
+
+            rotation = 180;
+            getSprite().setRotation(rotation);
 
             new Timer().schedule(new TimerTask() {
 
@@ -56,9 +61,13 @@ public class Dealer extends Character{
 
                     stopMovement = false;
                 }
-            }, 2000);
+            }, 10000);
 
         }
+        if(speed > 0){
+            rotation = 0;
+        }
+        getSprite().setRotation(rotation);
 
     }
 
