@@ -65,7 +65,13 @@ public class ServerListener implements Runnable {
 
     public void interpretMessage(String message) {
 
-        int[] arguments = Utils.argumentsToInt(message.split(" "));
+        System.out.println(message);
+        Integer[] arguments = Utils.argumentsToInt(message.split(" "));
+
+        if(arguments.length < 1) {
+            return;
+        }
+
         EventType event = EventType.values()[(arguments[0])];
 
         switch (event) {

@@ -1,5 +1,7 @@
 package org.academiadecodigo;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -7,17 +9,19 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class Utils {
 
-    public static int[] argumentsToInt(String[] arguments) {
+    public static Integer[] argumentsToInt(String[] arguments) {
 
-        int[] result = new int[arguments.length];
+        List<Integer> result = new LinkedList<Integer>();
 
-        for (int i = 0; i < result.length; i++) {
+        for (int i = 0; i < arguments.length; i++) {
 
-            result[i] = Integer.parseInt(arguments[i]);
+            System.out.println("Argument" + i + " -- " + arguments[i]);
+            if(arguments[i].isEmpty()) continue;
+             result.add(Integer.parseInt(arguments[i]));
 
         }
 
-        return result;
+        return result.toArray(new Integer[]{});
     }
 
     public static int generateRandomInt(int min, int max) {
