@@ -6,6 +6,7 @@ import org.academiadecodigo.client.ObjectType;
 import org.academiadecodigo.client.objects.Chore;
 import org.academiadecodigo.client.objects.ChoreType;
 import org.academiadecodigo.client.objects.ObjectFactory;
+import org.academiadecodigo.client.SoundEffects;
 import org.academiadecodigo.events.Event;
 import org.academiadecodigo.events.IdAssignEvent;
 import org.academiadecodigo.events.ObjectSpawnEvent;

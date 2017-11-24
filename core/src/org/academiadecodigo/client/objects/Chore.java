@@ -17,7 +17,7 @@ public class Chore extends GameObjects {
 
     public Chore(ChoreType choreType, float posX, float posY) {
 
-        super(posX, posY);
+        super();
 
         this.choreType = choreType;
         // this.sprite = new Sprite(new Texture(Gdx.files.internal("chore.png")));

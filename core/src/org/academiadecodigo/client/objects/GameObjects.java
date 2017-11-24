@@ -1,19 +1,19 @@
 package org.academiadecodigo.client.objects;
 
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+
 /**
  * Created by codecadet on 23/11/17.
  */
-public abstract class GameObjects {
+public abstract class GameObjects extends Actor {
 
-    private float posX;
-    private float posY;
+    private Sprite sprite;
 
 
-    public GameObjects(float posX, float posY) {
+    public GameObjects() {
 
-        this.posX = posX;
-        this.posY = posY;
     }
 
     public void collect(){

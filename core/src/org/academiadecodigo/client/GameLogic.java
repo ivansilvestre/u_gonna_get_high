@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import org.academiadecodigo.client.characters.Dealear;
 import org.academiadecodigo.client.characters.Enemy;
 import org.academiadecodigo.client.characters.Player;
 import org.academiadecodigo.client.screens.PlayScreen;
@@ -41,6 +42,8 @@ public class GameLogic extends Game {
 
         new Thread(serverListener).start();
 
+        SoundEffects.playMusic();
+
     }
 
     @Override
@@ -51,7 +54,6 @@ public class GameLogic extends Game {
         batch.begin();
         playScreen.render(0);
         //////////////////////////////////////////////////updates
-
 
 
 

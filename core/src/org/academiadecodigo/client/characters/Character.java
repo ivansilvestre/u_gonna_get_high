@@ -40,7 +40,4 @@ public abstract class Character extends Actor {
     }
 
 
-    public Rectangle getBounds() {
-        return bounds;
-    }
 }

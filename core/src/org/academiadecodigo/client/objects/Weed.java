@@ -17,7 +17,7 @@ public class Weed extends GameObjects {
 
     public Weed(WeedType weedType, float posX, float posY) {
 
-        super(posX, posY);
+        super();
         this.sprite = new Sprite(new Texture(Gdx.files.internal("weed.png")));
         this.bounds = new Rectangle(sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight());
         this.weedType = weedType;
