@@ -38,8 +38,8 @@ public class GameLogic extends Game {
 
     public GameLogic() {
 
-        weeds = new LinkedList<>();
-        enemyWeeds = new LinkedList<>();
+        weeds = new LinkedList<Weed>();
+        enemyWeeds = new LinkedList<Weed>();
     }
 
     @Override
@@ -73,6 +73,8 @@ public class GameLogic extends Game {
             if (w.getSprite().getX() <= player.getSprite().getX() && w.getSprite().getX() + w.getSprite().getWidth() + 10 >= player.getSprite().getX() + 10 &&
                     w.getSprite().getY() <= player.getSprite().getY() && w.getSprite().getY() + 15 >= player.getSprite().getY()) {
 
+                hud.setP1_dope(hud.getP1_dope()+ w.getWeedType().getIntensity());
+
                 w.remove();
                 SoundEffects.playWeedPickUp();
                 iterator.remove();
@@ -88,6 +90,8 @@ public class GameLogic extends Game {
 
             if (w.getSprite().getX() <= enemy.getSprite().getX() && w.getSprite().getX() + w.getSprite().getWidth() + 10 >= enemy.getSprite().getX() + 10 &&
                     w.getSprite().getY() <= enemy.getSprite().getY() && w.getSprite().getY() + 15 >= enemy.getSprite().getY()) {
+
+                hud.setP2_dope(hud.getP2_dope()+w.getWeedType().getIntensity());
 
                 w.remove();
                 SoundEffects.playWeedPickUp();
@@ -146,7 +150,7 @@ public class GameLogic extends Game {
         enemy.getSprite().setY(y);
     }
 
-    public void spawnWeed(int weedType, int x, int y) {
+    public void spawnWeed(final int weedType, final int x, final int y) {
 
         Gdx.app.postRunnable(new Runnable() {
             public void run() {
