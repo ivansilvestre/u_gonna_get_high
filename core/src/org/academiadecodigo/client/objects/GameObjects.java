@@ -13,7 +13,7 @@ public abstract class GameObjects extends Character{
 
 
     public GameObjects(Sprite sprite) {
-        super(sprite);
+        super(sprite, 0.20f);
     }
 
     public void collect() {

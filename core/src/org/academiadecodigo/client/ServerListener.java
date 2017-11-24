@@ -87,7 +87,7 @@ public class ServerListener implements Runnable {
                 break;
 
             case CHORE_SPAWN:
-                // game.spawnObject(type, x, y);
+                game.spawnObject(arguments[1], arguments[3], arguments[4]);
                 break;
 
             case WEED_SPAWN:

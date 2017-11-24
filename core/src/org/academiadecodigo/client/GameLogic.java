@@ -9,6 +9,8 @@ import com.badlogic.gdx.math.Rectangle;
 import org.academiadecodigo.client.characters.Dealear;
 import org.academiadecodigo.client.characters.Enemy;
 import org.academiadecodigo.client.characters.Player;
+import org.academiadecodigo.client.objects.Chore;
+import org.academiadecodigo.client.objects.ChoreType;
 import org.academiadecodigo.client.screens.Hud;
 import org.academiadecodigo.client.objects.Weed;
 import org.academiadecodigo.client.objects.WeedType;
@@ -35,10 +37,16 @@ public class GameLogic extends Game {
     private List<Weed> weeds;
     private List<Weed> enemyWeeds;
 
+    private List<Chore> chores;
+    private List<Chore> enemyChores;
+
     public GameLogic() {
 
         weeds = new LinkedList<>();
         enemyWeeds = new LinkedList<>();
+
+        chores = new LinkedList<>();
+        enemyChores = new LinkedList<>();
     }
 
     @Override
@@ -62,7 +70,7 @@ public class GameLogic extends Game {
 
     }
 
-    private void checkWeedCollisions() {
+    private void checkCollisions() {
 
         ListIterator<Weed> iterator = weeds.listIterator();
         while (iterator.hasNext()) {
@@ -72,6 +80,7 @@ public class GameLogic extends Game {
             if (w.getSprite().getX() <= player.getSprite().getX() && w.getSprite().getX() + w.getSprite().getWidth() + 10 >= player.getSprite().getX() + 10 &&
                     w.getSprite().getY() <= player.getSprite().getY() && w.getSprite().getY() + 15 >= player.getSprite().getY()) {
 
+                System.out.println("123");
                 w.remove();
                 SoundEffects.playWeedPickUp();
                 iterator.remove();
@@ -79,28 +88,44 @@ public class GameLogic extends Game {
             }
         }
 
-        iterator = enemyWeeds.listIterator();
+        ListIterator<Chore> choreIterator = chores.listIterator();
+        while (choreIterator.hasNext()) {
+
+            Chore w = choreIterator.next();
+
+            if (w.getSprite().getX() <= player.getSprite().getX() && w.getSprite().getX() + w.getSprite().getWidth() + 10 >= player.getSprite().getX() + 10 &&
+                    w.getSprite().getY() <= player.getSprite().getY() && w.getSprite().getY() + 15 >= player.getSprite().getY()) {
+
+                System.out.println("123");
+                w.remove();
+
+                choreIterator.remove();
+
+            }
+        }
+        /*iterator = enemyWeeds.listIterator();
 
         while (iterator.hasNext()) {
 
             Weed w = iterator.next();
 
-            if (w.getSprite().getX() <= enemy.getSprite().getX() && w.getSprite().getX() + w.getSprite().getWidth() + 10 >= enemy.getSprite().getX() + 10 &&
+            if ( 975 - w.getSprite().getX() <= enemy.getSprite().getX() && 975 - w.getSprite().getX() + w.getSprite().getWidth() + 10 >= enemy.getSprite().getX() + 10 &&
                     w.getSprite().getY() <= enemy.getSprite().getY() && w.getSprite().getY() + 15 >= enemy.getSprite().getY()) {
 
+                System.out.println();
                 w.remove();
                 SoundEffects.playWeedPickUp();
                 iterator.remove();
 
             }
-        }
+        }*/
 
     }
 
     @Override
     public void render() {
 
-        checkWeedCollisions();
+        checkCollisions();
 
         //updates
         // drawing
@@ -165,7 +190,22 @@ public class GameLogic extends Game {
 
     }
 
-    public List<Weed> getWeeds() {
-        return weeds;
+    public void spawnObject(Integer taskType, Integer x, Integer y) {
+
+        Gdx.app.postRunnable(new Runnable() {
+            public void run() {
+                ChoreType type = ChoreType.values()[taskType];
+                Chore chore = new Chore(type, x, y);
+                chores.add(chore);
+
+                playScreen.addActor(chore);
+
+                Chore enemyChore = new Chore(type, 980 - x, y);
+                enemyChores.add(enemyChore);
+
+                playScreen.addActor(enemyChore);
+
+            }
+        });
     }
 }

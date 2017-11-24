@@ -15,10 +15,12 @@ public class Chore extends GameObjects {
 
     public Chore(ChoreType choreType, float posX, float posY) {
 
-        super(new Sprite(new Texture(Gdx.files.internal("chore.png"))));
+        super(new Sprite(new Texture(Gdx.files.internal("aspirador.png"))));
 
         this.choreType = choreType;
         //this.bounds = new Rectangle(sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight());
+        getSprite().setX(posX);
+        getSprite().setY(posY);
     }
 
     public ChoreType getChoreType() {

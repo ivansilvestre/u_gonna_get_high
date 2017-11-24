@@ -25,7 +25,7 @@ public class CreateRandomWeed implements Runnable {
             int randomWeedX;
             int randomWeedY;
 
-            randomWeedX = Utils.generateRandomInt(Constants.LEFT_GARDEN_X, Constants.GARDEN_WIDTH + Constants.LEFT_GARDEN_X - 50);
+            randomWeedX = Utils.generateRandomInt(Constants.LEFT_GARDEN_X, Constants.GARDEN_WIDTH + Constants.LEFT_GARDEN_X - 100);
             randomWeedY = Utils.generateRandomInt(Constants.GARDEN_Y, Constants.GARDEN_HEIGHT + Constants.HOUSE_Y);
             randomWeed = WeedType.getRandom();
 
