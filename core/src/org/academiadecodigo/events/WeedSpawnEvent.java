@@ -12,7 +12,7 @@ public class WeedSpawnEvent extends Event {
     private int x;
     private int y;
 
-    public WeedSpawnEvent(ObjectType objectType, int objectLevel, int x , int y) {
+    public WeedSpawnEvent(int objectLevel, int x , int y) {
         super(EventType.WEED_SPAWN);
         this.objectType = objectType;
         this.objectLevel = objectLevel;
@@ -22,6 +22,6 @@ public class WeedSpawnEvent extends Event {
 
     @Override
     public String toString() {
-        return super.toString() + " " + objectType.ordinal() + " " + objectLevel + " " + x + " " + String.valueOf(y);
+        return super.toString() + " " + objectLevel + " " + String.valueOf(x) + " " + String.valueOf(y);
     }
 }

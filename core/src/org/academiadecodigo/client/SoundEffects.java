@@ -53,4 +53,22 @@ public class SoundEffects {
         catchItem = Gdx.audio.newSound(Gdx.files.internal("sound/catchItem.mp3"));
         // catchItem.play();
     }
+
+    public static void playWeedPickUp() {
+
+        int rand = (int) (Math.random() * 3);
+
+        if (rand == 0) {
+            smokeWeed.play();
+        }
+
+        if (rand == 1) {
+            smokeWeedEveryday.play();
+        }
+
+        if (rand == 2) {
+            yeah.play();
+        }
+
+    }
 }

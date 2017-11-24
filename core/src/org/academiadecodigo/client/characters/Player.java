@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Rectangle;
 import org.academiadecodigo.Constants;
 import org.academiadecodigo.client.GameLogic;
 
@@ -12,6 +13,7 @@ public class Player extends Character {
 
     private float speed;
 
+    private Rectangle rectangle;
     private GameLogic game;
 
     public Player(GameLogic game) {
@@ -22,6 +24,7 @@ public class Player extends Character {
         speed = 2f;
         initialPositioning();
 
+        rectangle = new Rectangle(getSprite().getX(), getSprite().getY(), 50, 50);
 
     }
 
@@ -30,6 +33,9 @@ public class Player extends Character {
         getSprite().setPosition(10, 100);
     }
 
+    public Rectangle getRectangle() {
+        return rectangle;
+    }
 
     @Override
     public void move() {
@@ -114,7 +120,7 @@ public class Player extends Character {
     }
 
     @Override
-    void dispose() {
+    public void dispose() {
 
     }
 

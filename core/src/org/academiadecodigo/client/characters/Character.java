@@ -19,7 +19,7 @@ public abstract class Character extends Actor {
         this.sprite = sprite;
     }
 
-    abstract void move();
+    protected abstract void move();
 
 
     @Override
@@ -32,7 +32,7 @@ public abstract class Character extends Actor {
     }
 
 
-    abstract void dispose();
+    protected abstract void dispose();
 
 
     public Sprite getSprite() {

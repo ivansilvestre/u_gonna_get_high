@@ -11,20 +11,27 @@ import com.badlogic.gdx.math.Rectangle;
 public class Chore extends GameObjects {
 
     private ChoreType choreType;
-    private Sprite sprite;
-    private Rectangle bounds;
 
 
     public Chore(ChoreType choreType, float posX, float posY) {
 
-        super();
+        super(new Sprite(new Texture(Gdx.files.internal("chore.png"))));
 
         this.choreType = choreType;
-        // this.sprite = new Sprite(new Texture(Gdx.files.internal("chore.png")));
         //this.bounds = new Rectangle(sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight());
     }
 
     public ChoreType getChoreType() {
         return choreType;
+    }
+
+    @Override
+    protected void move() {
+
+    }
+
+    @Override
+    protected void dispose() {
+
     }
 }

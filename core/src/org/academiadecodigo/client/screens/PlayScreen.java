@@ -23,7 +23,7 @@ import com.badlogic.gdx.utils.Array;
 import org.academiadecodigo.client.GameLogic;
 import org.academiadecodigo.client.characters.Enemy;
 import org.academiadecodigo.client.characters.Player;
-
+import org.academiadecodigo.client.objects.Weed;
 
 
 /**
@@ -39,6 +39,7 @@ public class PlayScreen extends ScreenAdapter {
     TiledMap tiledMap;
     OrthographicCamera camera;
     TiledMapRenderer tiledMapRenderer;
+    private boolean newWeed;
 
     private Array<Rectangle> walls;
 
@@ -122,4 +123,9 @@ public class PlayScreen extends ScreenAdapter {
         gameStage.addActor(actor);
     }
 
+    public void newWeed() {
+
+
+
+    }
 }

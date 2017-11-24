@@ -91,6 +91,10 @@ public class ServerListener implements Runnable {
                 // game.spawnObject(type, x, y);
                 break;
 
+            case WEED_SPAWN:
+                game.spawnWeed(arguments[1], arguments[2], arguments[3]);
+                break;
+
             default:
                 System.out.println("Unknown event");
         }
