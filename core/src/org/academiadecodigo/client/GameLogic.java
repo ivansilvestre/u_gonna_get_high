@@ -135,10 +135,6 @@ public class GameLogic extends Game {
     @Override
     public void render() {
 
-        if (!started) {
-            return;
-        }
-
         checkCollisions();
 
         //updates
