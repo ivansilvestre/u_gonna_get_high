@@ -15,8 +15,6 @@ public class GameLogic extends Game {
     public final static int HEIGHT = 640;
 
 
-
-
     @Override
     public void create() {
         batch = new SpriteBatch();
@@ -27,11 +25,10 @@ public class GameLogic extends Game {
     @Override
     public void render() {
 
-        Gdx.gl.glClearColor(1, 0, 0, 1);
+        Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         //updates
-        playScreen.update(0);
         // drawing
         batch.begin();
         playScreen.render(0);

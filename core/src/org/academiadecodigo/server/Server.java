@@ -6,25 +6,25 @@ package org.academiadecodigo.server;
 public class Server {
 
 
-    public void init(){
+    public void init() {
 
     }
 
-    public void acceptClient(){
-
-    }
-
-
-    public void sendMessageTo(){
+    public void acceptClient() {
 
     }
 
 
-    public void broadcast(){
+    public void sendMessageTo() {
 
     }
 
-    public void generateGameObjects(){
+
+    public void broadcast() {
+
+    }
+
+    public void generateGameObjects() {
 
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" nextobjectid="1">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" nextobjectid="14">
  <tileset firstgid="1" source="ficheiros_tmx/tile_relva.tmx"/>
  <tileset firstgid="2145" source="ficheiros_tmx/telhados.tmx"/>
  <tileset firstgid="3169" source="ficheiros_tmx/terreno.tmx"/>
@@ -37,9 +37,21 @@
  </layer>
  <layer name="estrada" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt0sEJgEAMBdH0YDfagfYh2o8FG1DPElbcOcyDf8tlIBGS/rAP146XPXdUdrDYwWIHix0sdrDYwULu2Aq3X3eMuSm33mvRs2POLdHeUEX+qwo7WOxgsYPFDhY7WOxgsYPFDhY7WHp2nHjdBLw=
+   eJzt0sEJgDAQBdH0YDfagfYh2k8Kdg82sCSyg8zAvwWWB+lLa91hdn+wipt/ccws66Cmg5UOVjpY6WClg5UOVmTHlXg727HGttj5bqRKxx472rghG/lfZdLBSgcrHax0sNLBSgcrHax0sNLBqtLxAI8CeRg=
   </data>
  </layer>
+ <objectgroup name="wall">
+  <object id="2" x="0" y="64" width="304" height="16"/>
+  <object id="3" x="128" y="80" width="32" height="208"/>
+  <object id="4" x="128" y="320" width="32" height="320"/>
+  <object id="5" x="0" y="624" width="304" height="16"/>
+  <object id="6" x="296" y="65.3333" width="6.66667" height="566.667"/>
+  <object id="7" x="497.333" y="64" width="5.33333" height="576"/>
+  <object id="8" x="496" y="624" width="304" height="16"/>
+  <object id="9" x="496" y="64" width="304" height="16"/>
+  <object id="10" x="638.667" y="72" width="28" height="214.667"/>
+  <object id="11" x="641.333" y="321.333" width="32" height="304"/>
+ </objectgroup>
  <layer name="decorate" width="50" height="40">
   <data encoding="base64" compression="zlib">
    eJztmEsKwkAMhiO4UGfpGdQjuHAhqKVn8SgKLnxd1MfGB5ihbqrUTHDqJJIPfupixuaD/qUtgGEYVVwcwNW9H2+Yuwv/nyXjnPNukQVjz8EVObry7xPmzJiTom6PX+E9ho2wtd7Br5XqMQ70gOdaqR45wyMX7MHFPOqD03OA/+95M9ZAgbyez3ouC++xYu6R6rFn7pHqwUWiR12MUg+gFO515e8JEq8rroe/J0j1sOeSMq0MoI3pZDEm4xHzuaSH8/cxg0QeXKo8Jjj/FDNT7pESLT2nuqflOwPVPS3vH1T3vunHr98BP2E9l4WWnlNo6TlFzH6k7L31XBZaer4msgN+z7d43BAJ5QHLmFNT
@@ -47,7 +59,7 @@
  </layer>
  <layer name="arvore" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt10dOw0AUxnGvQucStAQuAUwoF6At6HABqkRvO5BoCzpcAFjR4QJ0QucCdAihrflHYMmWWKDgcRjkT/ops8nMe1L8MtY0J06cOHHyl5MnNM3FZ4H4XOeLz7VqqaHmWtQJ81q19FPzAAaFeW1lXNZu921mqXkO88K8Vi2b1LyFbWFeq5ZLar7CtTCvfxOV54Ux/6UPO+deIWcUSTpH1tz7LvWc0YBGCWcZ554bHon9DLH3sKT9jXMvC9lhfE56Q/hO39enVXPPinSH8J0ey6v4eWTOSDvnr6wZGexBn4l29CFrRgb7kDkTjdFnooy7YbAPfSbK/h/RZ6KMu6Hx2bDj/ixrRhqfOxXvz3qMz104/kesendT+Z3MGLveyXbYfxd72McBfDjEEY5/eb5dd5Mb9r/FHe7xgEf48YSAIr8Hl1fTIhCJKEQjBrGIQ7w33BX+LAnUmYgkJCMFbniQijRF+kinzgxkQsCLLGQjB7mK9FFMnSUoRRnKUYFKVKFakT6aqLMZLWhFG9rRgU50KdLHCHWOYgzjmMAkpjCNGUX6WKDORSxhGStYxRrWsaFIHz7qPMQRjnGCU5zhHBeK9PFInX48IYBnvOAVb3gPcx8fAs24gQ==
+   eJzt10lOG0EUxvFemSmwY8mKIQyXAMp2uADTghkuQBgkCAECO5CYFsxwAWDFDBcAwmAz5gIJCWAgDGv+FmmpW2Lh2FXdKuRP+sm1cdV7kvu52jDiiScelUl1uwBJSXe7AEnJcLuAKFIqDMPDZ7l4XZeJ13UsSZJS2f+lmZo/o0XY17pliJqHMSLsa5nxyN3uzSxQ8yKWhH2tW3aoeRd7wr7WLT+p+RcuhX0dS2TNC7fzXvpwcu5VcEalonNUzb230soZbWhXcJZ17uUiT2E/o+w9pmh/69zzwe/iczIQxXcG/33Kmnsy0hfFd/qlVxF5VM5IJ+evqhkZ7sGciU70oWpGhvtQOROtMWeiirthuA9zJqr+HzFnooq7ofXZcOL+rGpGWp87He/PZqzPnRv/I7Le3XR+J7PGqXey7+y/jwMc4ggBBHGMkxjPd+pu8pv9/+AK17hBCLe4w70mvweP1zASkIgkJCMFH5CKNK/bFUaWTOrMQjZy8BG5yEM+CjTpo5A6i1AMAS988OMTSjTpo4o6q1GDWtShHg1oRJMmfXRQZye+oAtf0Y0e9OKbJn2MU+cEJjGFacxgFnOY16SPZepcwSrWsI4NbGIL25r0EaDOII5xglOc4RwX+KFJHyHqvMUd7vEXD3jEE55d7uMFhAa4yQ==
   </data>
  </layer>
 </map>

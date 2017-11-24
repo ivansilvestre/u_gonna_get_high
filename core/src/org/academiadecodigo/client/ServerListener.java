@@ -5,11 +5,11 @@ package org.academiadecodigo.client;
  */
 public class ServerListener {
 
-    public void listen(){
+    public void listen() {
 
     }
 
-    public void interpretMessage(){
+    public void interpretMessage() {
 
     }
 

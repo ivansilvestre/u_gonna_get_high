@@ -6,12 +6,11 @@ package org.academiadecodigo.client;
 public class SoundFx {
 
 
-
-    public void playMusic(){
+    public void playMusic() {
 
     }
 
-    public void playSound(){
+    public void playSound() {
 
     }
 
