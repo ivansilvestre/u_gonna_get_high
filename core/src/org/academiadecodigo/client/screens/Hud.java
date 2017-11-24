@@ -14,6 +14,9 @@ import com.badlogic.gdx.utils.viewport.Viewport;
  */
 public class Hud implements Disposable {
 
+    private int p2_score = 0;
+    private int p1_score = 0;
+
     //Scene2D.ui Stage and its own Viewport for HUD
     public Stage stage;
     private Viewport viewport;
@@ -22,22 +25,28 @@ public class Hud implements Disposable {
     private Integer worldTimer;
     private float timeCount;
     private static Integer money;
-    private  int dopeLevel;
+    private int dopeLevel;
+    private SpriteBatch sb;
 
 
     //Scene2D widgets
-    private Label countdownLabel;
-    private static Label scoreLabel;
-    private Label timeLabel;
-    private Label levelLabel;
-    private Label worldLabel;
-    private Label marioLabel;
+    private Label p2_scoreLabel;
+    private Label p1_scoreLabel;
+    private Label player2;
+    private Label timer;
+    private Label TIME;
+    private Label player1;
 
-    public Hud(SpriteBatch sb){
+    public Hud(SpriteBatch sb) {
         //define our tracking variables
+
+        this.stage = new Stage();
+
         worldTimer = 300;
         timeCount = 0;
+
         money = 0;
+        this.sb = sb;
 
 
         //setup the HUD viewport using a new camera seperate from our gamecam
@@ -53,48 +62,55 @@ public class Hud implements Disposable {
         table.setFillParent(true);
 
         //define our labels using the String, and a Label style consisting of a font and color
-        countdownLabel = new Label(String.format("%03d", worldTimer), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        scoreLabel =new Label(String.format("%06d", money), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        timeLabel = new Label("TIME", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        levelLabel = new Label("1-1", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        worldLabel = new Label("WORLD", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        marioLabel = new Label("MARIO", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        p2_scoreLabel = new Label(String.format("%01d", p1_score), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        p1_scoreLabel = new Label(String.format("%01d", p2_score), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        player2 = new Label("PLAYER 2", new Label.LabelStyle(new BitmapFont().getData().setScale(1f, 1f), Color.WHITE));
+        timer = new Label(String.format("%03d",worldTimer), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        TIME = new Label("TIME", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        player1 = new Label("PLAYER 1", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 
         //add our labels to our table, padding the top, and giving them all equal width with expandX
-        table.add(marioLabel).expandX().padTop(10);
-        table.add(worldLabel).expandX().padTop(10);
-        table.add(timeLabel).expandX().padTop(10);
+        table.add(player1).expandX().padTop(10);
+        table.add(TIME).expandX().padTop(10);
+        table.add(player2).expandX().padTop(10);
+
         //add a second row to our table
         table.row();
-        table.add(scoreLabel).expandX();
-        table.add(levelLabel).expandX();
-        table.add(countdownLabel).expandX();
+        table.add(p1_scoreLabel).expandX();
+        table.add(timer).expandX();
+        table.add(p2_scoreLabel).expandX();
 
         //add our table to the stage
         stage.addActor(table);
 
     }
-/*
-    public void update(float dt){
-        timeCount += dt;
-        if(timeCount >= 1){
-            if (worldTimer > 0) {
-                worldTimer--;
-            } else {
-                boolean timeUp = true;
+
+
+        public void update(float dt){
+            timeCount += dt;
+            if(timeCount >= 1){
+                if (worldTimer > 0) {
+                    worldTimer--;
+                } else {
+                    boolean timeUp = true;
+                }
+                timer.setText(String.format("%03d", worldTimer));
+                timeCount = 0;
             }
-            countdownLabel.setText(String.format("%03d", worldTimer));
-            timeCount = 0;
         }
-    }
-
-    public static void addScore(int value){
-        money += value;
-        scoreLabel.setText(String.format("%06d", money));
-    }
-*/
+/*
+        public static void addScore(int value){
+            money += value;
+            p1_scoreLabel.setText(String.format("%06d", money));
+        }
+  */
     @Override
-    public void dispose() { stage.dispose(); }
+    public void dispose() {
+        stage.dispose();
+    }
 
+    public void draw() {
+
+    }
 
 }

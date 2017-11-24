@@ -6,6 +6,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.academiadecodigo.client.characters.Player;
+import org.academiadecodigo.client.screens.Hud;
+import org.academiadecodigo.client.screens.Placard;
 import org.academiadecodigo.client.screens.PlayScreen;
 
 public class GameLogic extends Game {
@@ -17,6 +19,8 @@ public class GameLogic extends Game {
     private SpriteBatch batch;
     private Player player;
     private int playerId;
+    private Placard placard;
+    private Hud hud;
 
     public GameLogic() {
 
@@ -27,8 +31,12 @@ public class GameLogic extends Game {
 
         batch = new SpriteBatch();
 
+        hud = new Hud(batch);
+
         playScreen = new PlayScreen(this);
         this.player = new Player(batch);
+
+        placard = new Placard();
     }
 
     @Override
@@ -47,6 +55,9 @@ public class GameLogic extends Game {
 
         // drawing
         player.draw();
+
+        hud.update(0.02f);
+        hud.stage.draw();
 
         batch.end();
     }
