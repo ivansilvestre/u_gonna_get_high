@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tileset name="tile_arvore" tilewidth="16" tileheight="16" margin="1" tilecount="928" columns="29">
+ <image source="../imagens_mapa/arvores.png" width="480" height="528"/>
+</tileset>
