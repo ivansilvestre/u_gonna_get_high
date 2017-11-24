@@ -22,4 +22,8 @@ public class Weed extends GameObjects {
         this.bounds = new Rectangle(sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight());
         this.weedType = weedType;
     }
+
+    public WeedType getWeedType() {
+        return weedType;
+    }
 }

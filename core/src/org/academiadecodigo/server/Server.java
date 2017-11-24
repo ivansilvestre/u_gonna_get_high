@@ -1,15 +1,7 @@
 package org.academiadecodigo.server;
 
-import org.academiadecodigo.Constants;
-import org.academiadecodigo.Utils;
-import org.academiadecodigo.client.ObjectType;
-import org.academiadecodigo.client.objects.Chore;
-import org.academiadecodigo.client.objects.ChoreType;
-import org.academiadecodigo.client.objects.ObjectFactory;
-import org.academiadecodigo.client.SoundEffects;
 import org.academiadecodigo.events.Event;
 import org.academiadecodigo.events.IdAssignEvent;
-import org.academiadecodigo.events.ObjectSpawnEvent;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -40,9 +32,13 @@ public class Server {
     public void init() {
         try {
             serverSocket = new ServerSocket(PORT);
-
+            CreateRandomChore createRandomChore = new CreateRandomChore(this);
+            CreateRandomWeed createRandomWeed = new CreateRandomWeed(this);
             acceptClients();     //accepts 2 players
-            generateGameObjects();
+            new Thread(createRandomChore).start();
+
+
+            new Thread(createRandomWeed).start();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -97,17 +93,12 @@ public class Server {
     }
 
 
-    public void generateGameObjects() {
-        Chore randomChore;
-        int randomX;
-        int randomY;
+    public void generateChore() {
 
-        randomX = Utils.generateRandomInt(Constants.LEFT_HOUSE_X, Constants.HOUSE_WIDTH + Constants.LEFT_HOUSE_X);
-        randomY = Utils.generateRandomInt(Constants.HOUSE_Y, Constants.HOUSE_HEIGHT + Constants.HOUSE_Y);
+    }
 
-        randomChore = ObjectFactory.createChore(randomX, randomY);
-        System.out.println(randomChore.getChoreType());
-        broadcast(new ObjectSpawnEvent(ObjectType.CHORE, randomChore.getChoreType().ordinal(), randomX, randomY));
+    public void generateWeed() {
+
     }
 
 }
