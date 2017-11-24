@@ -70,7 +70,7 @@ public class ServerListener implements Runnable {
 
         switch (event) {
             case START:
-                // game.start();
+                 //game.start();
                 break;
 
             case PLAYER_ASSIGN:

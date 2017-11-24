@@ -22,6 +22,7 @@ public class Hud implements Disposable {
     private int p1_dope = 100;
     private int p2_dope = 100;
 
+
     //Scene2D.ui Stage and its own Viewport for HUD
     public Stage stage;
     private Viewport viewport;
@@ -124,7 +125,24 @@ public class Hud implements Disposable {
         stage.dispose();
     }
 
+
     public void draw() {
 
+    }
+
+    public void setP1_dope(int p1_dope) {
+        this.p1_dope = p1_dope;
+    }
+
+    public void setP2_dope(int p2_dope) {
+        this.p2_dope = p2_dope;
+    }
+
+    public void setP1_score(int p1_score) {
+        this.p1_score = p1_score;
+    }
+
+    public void setP2_score(int p2_score) {
+        this.p2_score = p2_score;
     }
 }
