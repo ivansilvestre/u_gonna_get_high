@@ -16,6 +16,10 @@ public enum WeedType {
 
     }
 
+    public static WeedType getRandom() {
+        return values()[(int) (Math.random() * values().length)];
+    }
+
     public int getIntensity() {
         return intensity;
     }

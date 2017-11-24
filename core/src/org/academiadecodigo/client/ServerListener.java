@@ -79,7 +79,7 @@ public class ServerListener implements Runnable{
                 game.movePlayer(arguments[1], arguments[2], arguments[3]);
                 break;
 
-            case OBJECT_SPAWN:
+            case CHORE_SPAWN:
                 // game.spawnObject(type, x, y);
                 break;
 

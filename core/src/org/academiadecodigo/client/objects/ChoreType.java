@@ -24,8 +24,8 @@ public enum ChoreType {
     }
 
 
-    public float getChoreValues() {
-        return choreValues;
+    public static ChoreType getRandomChore() {
+        return values()[(int) (Math.random() * values().length)];
     }
 
     public static ChoreType[] getlowChores(){

@@ -7,5 +7,6 @@ public enum EventType {
     START,
     PLAYER_ASSIGN,
     PLAYER_MOVE,
-    OBJECT_SPAWN;
+    CHORE_SPAWN,
+    WEED_SPAWN;
 }
