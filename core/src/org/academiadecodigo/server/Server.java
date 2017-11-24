@@ -1,6 +1,7 @@
 package org.academiadecodigo.server;
 
 import org.academiadecodigo.events.Event;
+import org.academiadecodigo.events.IdAssignEvent;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -51,12 +52,16 @@ public class Server {
             ClientListener clientListener = new ClientListener(connection, this);
             cachedPool.submit(clientListener);
 
+            sendMessageTo(connection, (new IdAssignEvent(i)).toString());
+
             System.out.println("client accepted " + connection.getInetAddress().getHostName());
 
         }
     }
 
     public void sendMessageTo(Socket clientSocket, String message) throws IOException {
+
+        System.out.println(message);
 
         PrintStream out = new PrintStream((clientSocket.getOutputStream()), true);
         out.println(message);

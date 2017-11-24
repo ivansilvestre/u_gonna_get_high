@@ -5,6 +5,7 @@ package org.academiadecodigo.events;
  */
 public enum EventType {
     START,
+    PLAYER_ASSIGN,
     PLAYER_MOVE,
     OBJECT_SPAWN;
 }

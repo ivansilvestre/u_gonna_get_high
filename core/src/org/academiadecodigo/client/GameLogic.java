@@ -16,6 +16,7 @@ public class GameLogic extends Game {
 
     private SpriteBatch batch;
     private Player player;
+    private int playerId;
 
     public GameLogic() {
 
@@ -54,5 +55,18 @@ public class GameLogic extends Game {
     public void dispose() {
 
         batch.dispose();
+    }
+
+    public void setPlayerId(int playerId) {
+        this.playerId = playerId;
+    }
+
+    public void movePlayer(int playerId, int x, int y) {
+
+        if (playerId == this.playerId) {
+            return;
+        }
+
+        // TODO move second player
     }
 }

@@ -1,5 +1,6 @@
 package org.academiadecodigo.client;
 
+import org.academiadecodigo.Utils;
 import org.academiadecodigo.events.EventType;
 
 import java.io.BufferedReader;
@@ -62,16 +63,20 @@ public class ServerListener implements Runnable{
 
     public void interpretMessage(String message){
 
-        String[] arguments = message.split(" ");
-        EventType event = EventType.values()[Integer.parseInt(arguments[0])];
+        int[] arguments = Utils.argumentsToInt(message.split(" "));
+        EventType event = EventType.values()[(arguments[0])];
 
         switch (event) {
             case START:
                 // game.start();
                 break;
 
+            case PLAYER_ASSIGN:
+                game.setPlayerId(arguments[1]);
+                break;
+
             case PLAYER_MOVE:
-                // game.movePlayer(x, y);
+                game.movePlayer(arguments[1], arguments[2], arguments[3]);
                 break;
 
             case OBJECT_SPAWN:
