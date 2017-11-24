@@ -41,12 +41,10 @@ public class Server {
     public void init() {
         try {
             serverSocket = new ServerSocket(PORT);
+            acceptClients();     //accepts 2 players
             CreateRandomChore createRandomChore = new CreateRandomChore(this);
             CreateRandomWeed createRandomWeed = new CreateRandomWeed(this);
-            acceptClients();     //accepts 2 players
             new Thread(createRandomChore).start();
-
-
             new Thread(createRandomWeed).start();
 
 
@@ -102,13 +100,5 @@ public class Server {
         }
     }
 
-
-    public void generateChore() {
-
-    }
-
-    public void generateWeed() {
-
-    }
 
 }

@@ -1,17 +1,11 @@
 package org.academiadecodigo.client.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.maps.MapLayer;
-import com.badlogic.gdx.maps.MapObjects;
-import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.objects.TextureMapObject;
-import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -20,6 +14,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import org.academiadecodigo.client.GameLogic;
+import org.academiadecodigo.client.characters.Dealer;
 import org.academiadecodigo.client.characters.Enemy;
 import org.academiadecodigo.client.characters.Player;
 
@@ -49,7 +44,7 @@ public class PlayScreen extends ScreenAdapter {
     private TextureMapObject object;
 
 
-    public PlayScreen(Player player, Enemy enemy) {
+    public PlayScreen(Player player, Enemy enemy, Dealer dealer) {
 
         this.walls = new Array<Rectangle>();
 
@@ -66,6 +61,7 @@ public class PlayScreen extends ScreenAdapter {
         //player.setCamera(camera);
         gameStage.addActor(player);
         gameStage.addActor(enemy);
+        gameStage.addActor(dealer);
         tiledMapRenderer.setView(camera);
 
 

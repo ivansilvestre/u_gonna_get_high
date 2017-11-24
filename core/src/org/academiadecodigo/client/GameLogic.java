@@ -2,11 +2,8 @@ package org.academiadecodigo.client;
 
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import org.academiadecodigo.client.characters.Dealer;
 import org.academiadecodigo.client.characters.Enemy;
 import org.academiadecodigo.client.characters.Player;
 import org.academiadecodigo.client.screens.Hud;
@@ -22,6 +19,7 @@ public class GameLogic extends Game {
 
     private SpriteBatch batch;
     private Player player;
+    private Dealer dealer;
     private Enemy enemy;
     private int playerId;
     private Placard placard;
@@ -41,8 +39,11 @@ public class GameLogic extends Game {
 
         placard = new Placard();
         this.player = new Player(this);
+        this.dealer = new Dealer();
+
         enemy = new Enemy();
-        playScreen = new PlayScreen(player, enemy);
+        playScreen = new PlayScreen(player, enemy, dealer);
+
 
         serverListener = new ServerListener(this);
 
