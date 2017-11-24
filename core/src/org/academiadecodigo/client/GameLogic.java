@@ -10,6 +10,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.academiadecodigo.client.characters.Dealear;
 import org.academiadecodigo.client.characters.Enemy;
 import org.academiadecodigo.client.characters.Player;
+import org.academiadecodigo.client.screens.Hud;
+import org.academiadecodigo.client.screens.Placard;
 import org.academiadecodigo.client.screens.PlayScreen;
 import org.academiadecodigo.events.MoveEvent;
 
@@ -23,6 +25,8 @@ public class GameLogic extends Game {
     private Player player;
     private Enemy enemy;
     private int playerId;
+    private Placard placard;
+    private Hud hud;
     private ServerListener serverListener;
 
     public GameLogic() {
@@ -34,6 +38,9 @@ public class GameLogic extends Game {
 
         batch = new SpriteBatch();
 
+        hud = new Hud(batch);
+
+        placard = new Placard();
         this.player = new Player(this);
         enemy = new Enemy();
         playScreen = new PlayScreen(player, enemy);
@@ -62,6 +69,10 @@ public class GameLogic extends Game {
 
 
         // drawing
+
+        hud.update(0.02f);
+        hud.stage.draw();
+
         batch.end();
     }
 

@@ -10,6 +10,8 @@ import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.objects.TextureMapObject;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -50,7 +52,7 @@ public class PlayScreen extends ScreenAdapter {
 
     public PlayScreen(Player player, Enemy enemy) {
 
-        this.walls = new Array<>();
+        this.walls = new Array<Rectangle>();
 
         this.player = player;
         gameStage = new Stage();
