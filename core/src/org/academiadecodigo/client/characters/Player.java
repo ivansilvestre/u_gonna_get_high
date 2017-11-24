@@ -2,35 +2,36 @@ package org.academiadecodigo.client.characters;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapObjects;
 
 
 public class Player extends Character {
 
-    private int speed;
-    private SpriteBatch batch;
+    private float speed;
 
-
-    public Player(SpriteBatch batch) {
+    public Player() {
 
         super(new Sprite(new Texture(Gdx.files.internal("afro.png"))));
 
-        this.batch = batch;
-        speed = 2;
+        speed = 2f;
         initialPositioning();
 
     }
 
     private void initialPositioning() {
+
         getSprite().setPosition(0, (Gdx.graphics.getHeight() / 2) - getSprite().getHeight() / 2);
     }
 
 
     @Override
     public void move() {
-
 
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
             translate(0, -speed);
@@ -49,9 +50,16 @@ public class Player extends Character {
     }
 
     @Override
-    public void draw() {
+    public void draw(Batch batch, float parentAlpha) {
 
-        this.batch.draw(getSprite(), getSprite().getX(), getSprite().getY());
+        super.draw(batch, parentAlpha);
+        batch.draw(getSprite(), getSprite().getX(), getSprite().getY(), getSprite().getRegionWidth() * 0.25f, getSprite().getRegionHeight() * 0.25f);
+    }
+
+    @Override
+    public void act(float delta) {
+        super.act(delta);
+        move();
     }
 
     @Override
