@@ -96,7 +96,7 @@ public class GameLogic extends Game {
                     continue;
                 }
 
-                hud.setP1_dope(hud.getP1_dope() + w.getWeedType().getIntensity());
+                hud.setP1_dope(hud.getP1_dope() + w.getWeedType().getIntensity() * 10);
                 hud.setP1_score(hud.getP1_score() - 10);
 
                 w.remove();
@@ -111,7 +111,7 @@ public class GameLogic extends Game {
 
             Chore w = choreIterator.next();
 
-            if (w.getSprite().getX() <= player.getSprite().getX() && w.getSprite().getX() + w.getSprite().getWidth() + 10 >= player.getSprite().getX() + 10 &&
+            if (w.getSprite().getX() <= player.getSprite().getX() && w.getSprite().getX() + 25 >= player.getSprite().getX() + 10 &&
                     w.getSprite().getY() <= player.getSprite().getY() && w.getSprite().getY() + 15 >= player.getSprite().getY()) {
 
                 w.remove();

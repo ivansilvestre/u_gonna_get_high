@@ -123,7 +123,6 @@ public class Hud implements Disposable {
     }
 
     public void updateDope(float dt) {
-        timeCount += dt;
 
         if (timeCount >= 1) {
             if (p1_dope > 0 || p2_dope > 0) {
@@ -132,8 +131,14 @@ public class Hud implements Disposable {
             }
             p1_DopeLevel.setText(String.format("%03d", p1_dope));
             p2_DopeLevel.setText(String.format("%03d", p2_dope));
+            p1_scoreLabel.setText(String.format("%03d", p1_score));
+            p2_scoreLabel.setText(String.format("%03d", p2_score));
             timeCount = 0;
         }
+    }
+
+    public void updateScore(float dt) {
+
     }
 
     /*
