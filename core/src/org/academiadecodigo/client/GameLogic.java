@@ -7,8 +7,10 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import org.academiadecodigo.client.characters.Enemy;
 import org.academiadecodigo.client.characters.Player;
 import org.academiadecodigo.client.screens.PlayScreen;
+import org.academiadecodigo.events.MoveEvent;
 
 public class GameLogic extends Game {
 
@@ -18,7 +20,9 @@ public class GameLogic extends Game {
 
     private SpriteBatch batch;
     private Player player;
+    private Enemy enemy;
     private int playerId;
+    private ServerListener serverListener;
 
     public GameLogic() {
 
@@ -29,8 +33,14 @@ public class GameLogic extends Game {
 
         batch = new SpriteBatch();
 
-        this.player = new Player();
-        playScreen = new PlayScreen(player);
+        this.player = new Player(this);
+        enemy = new Enemy();
+        playScreen = new PlayScreen(player, enemy);
+
+        serverListener = new ServerListener(this);
+
+        new Thread(serverListener).start();
+
     }
 
     @Override
@@ -59,6 +69,13 @@ public class GameLogic extends Game {
         batch.dispose();
     }
 
+    public void sendPosition() {
+        int x = (int) player.getSprite().getX();
+        int y = (int) player.getSprite().getY();
+
+        serverListener.sendMessage(new MoveEvent(playerId, x, y));
+    }
+
     public void setPlayerId(int playerId) {
         this.playerId = playerId;
     }
@@ -69,6 +86,9 @@ public class GameLogic extends Game {
             return;
         }
 
+
         // TODO move second player
+        enemy.getSprite().setX(950 - x);
+        enemy.getSprite().setY(y);
     }
 }
