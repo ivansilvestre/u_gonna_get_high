@@ -12,8 +12,8 @@ public abstract class ObjectFactory {
 
         if (difficulty <= 0.70) {
 
-            int lowDif = (int) (Math.random() * 3 + 1);
-            chore = new Chore(ChoreType.values()[lowDif], posX, posY);
+            int lowDif = (int) (Math.random() * 3);
+            chore = new Chore(ChoreType.getlowChores()[lowDif], posX, posY);
         }
 
         if (difficulty > 0.70) {

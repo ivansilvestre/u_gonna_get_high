@@ -53,7 +53,8 @@ public class Player extends Character {
     public void draw(Batch batch, float parentAlpha) {
 
         super.draw(batch, parentAlpha);
-        batch.draw(getSprite(), getSprite().getX(), getSprite().getY(), getSprite().getRegionWidth() * 0.25f, getSprite().getRegionHeight() * 0.25f);
+        batch.draw(getSprite(), getSprite().getX(), getSprite().getY(), getSprite().getRegionWidth() * 0.25f,
+                getSprite().getRegionHeight() * 0.25f);
     }
 
     @Override
@@ -70,6 +71,7 @@ public class Player extends Character {
     public void translate(float x, float y) {
 
         getSprite().setPosition(getSprite().getX() + x, getSprite().getY() + y);
+        System.out.println(getSprite().getX() + "--" + getSprite().getY());
         getBounds().setPosition(getSprite().getX(), getSprite().getY());
 
     }

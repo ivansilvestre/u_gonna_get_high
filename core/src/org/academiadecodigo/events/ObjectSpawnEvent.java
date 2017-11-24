@@ -8,18 +8,20 @@ import org.academiadecodigo.client.ObjectType;
 public class ObjectSpawnEvent extends Event{
 
     private ObjectType objectType;
+    private int objectLevel;
     private int x;
     private int y;
 
-    public ObjectSpawnEvent(ObjectType objectType, int x, int y) {
+    public ObjectSpawnEvent(ObjectType objectType, int objectLevel, int x, int y) {
         super(EventType.OBJECT_SPAWN);
         this.objectType = objectType;
+        this.objectLevel = objectLevel;
         this.x = x;
         this.y = y;
     }
 
     @Override
     public String toString() {
-        return super.toString() + " " + objectType.ordinal() + " " + String.valueOf(x) + " " + String.valueOf(y);
+        return super.toString() + " " + objectType.ordinal() + " " + objectLevel + " " + x + " " + String.valueOf(y);
     }
 }
