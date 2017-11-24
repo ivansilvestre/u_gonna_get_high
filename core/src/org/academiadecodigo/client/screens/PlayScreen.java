@@ -8,13 +8,18 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObjects;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
+import com.badlogic.gdx.maps.objects.TextureMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Array;
 import org.academiadecodigo.client.GameLogic;
 import org.academiadecodigo.client.characters.Player;
+
 
 
 /**
@@ -31,13 +36,19 @@ public class PlayScreen extends ScreenAdapter {
     OrthographicCamera camera;
     TiledMapRenderer tiledMapRenderer;
 
+    private Array<Rectangle> walls;
+
 
     private Stage gameStage;
 
     private Player player;
 
+    private TextureMapObject object;
+
 
     public PlayScreen(Player player) {
+
+        this.walls = new Array<>();
 
         this.player = player;
         gameStage = new Stage();
@@ -53,7 +64,9 @@ public class PlayScreen extends ScreenAdapter {
         gameStage.addActor(player);
         tiledMapRenderer.setView(camera);
 
+
     }
+
 
     @Override
     public void render(float delta) {

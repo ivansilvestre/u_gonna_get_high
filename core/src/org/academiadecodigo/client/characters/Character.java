@@ -16,7 +16,6 @@ public abstract class Character extends Actor {
 
         super();
         this.sprite = sprite;
-        bounds = new Rectangle(sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight());
     }
 
     abstract void move();
