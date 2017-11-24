@@ -22,6 +22,7 @@ public class Hud implements Disposable {
     private int p1_dope = 100;
     private int p2_dope = 100;
 
+    private int p1_dopeTimer;
 
 
     //Scene2D.ui Stage and its own Viewport for HUD
@@ -104,6 +105,7 @@ public class Hud implements Disposable {
 
     public void update(float dt) {
         timeCount += dt;
+
         if (timeCount >= 1) {
             if (worldTimer > 0) {
                 worldTimer--;
@@ -111,6 +113,19 @@ public class Hud implements Disposable {
                 boolean timeUp = true;
             }
             timer.setText(String.format("%03d", worldTimer));
+        }
+    }
+
+    public void updateDope(float dt) {
+        timeCount += dt;
+
+        if (timeCount >= 1) {
+            if (p1_dope > 0 || p2_dope > 0) {
+                p1_dope -= 1;
+                p2_dope -= 1;
+            }
+            p1_DopeLevel.setText(String.format("%03d", p1_dope));
+            p2_DopeLevel.setText(String.format("%03d", p2_dope));
             timeCount = 0;
         }
     }
@@ -147,19 +162,19 @@ public class Hud implements Disposable {
         this.p2_score = p2_score;
     }
 
-    public int getP1_dope(){
+    public int getP1_dope() {
         return p1_dope;
     }
 
-    public  int getP2_dope(){
+    public int getP2_dope() {
         return p2_dope;
     }
 
-    public int getP1_score(){
+    public int getP1_score() {
         return p1_score;
     }
 
-    public  int getP2_score(){
+    public int getP2_score() {
         return p2_score;
     }
 }

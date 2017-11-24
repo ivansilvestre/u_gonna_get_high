@@ -117,6 +117,7 @@ public class GameLogic extends Game {
         // drawing
 
         hud.update(0.02f);
+        hud.updateDope( 0.000001f);
         hud.stage.draw();
 
         batch.end();
