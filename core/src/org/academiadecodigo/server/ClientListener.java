@@ -37,7 +37,7 @@ public class ClientListener implements Runnable {
                 server.broadcast(message);
                 break;
 
-            case OBJECT_SPAWN:
+            case CHORE_SPAWN:
                 break;
 
             default:
