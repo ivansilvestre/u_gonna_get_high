@@ -1,30 +1,91 @@
 package org.academiadecodigo.server;
 
+import org.academiadecodigo.events.Event;
+
+import java.io.IOException;
+import java.io.PrintStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+
 /**
  * Created by codecadet on 23/11/17.
  */
 public class Server {
 
+    private final int MAX_PLAYERS = 2;
+    private final int PORT = 9999;
+    private ServerSocket serverSocket;
+    private Socket[] sockets;
+    private ExecutorService cachedPool;
+
+
+    public Server() {
+        cachedPool = Executors.newCachedThreadPool();
+        sockets = new Socket[MAX_PLAYERS];
+    }
+
 
     public void init() {
+        try {
+            serverSocket = new ServerSocket(PORT);
+
+            acceptClients();     //accepts 2 players
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void acceptClients() throws IOException {
+
+        for (int i = 0; i < MAX_PLAYERS; i++) {
+
+
+            Socket connection = serverSocket.accept();
+            sockets[i] = connection;
+
+            ClientListener clientListener = new ClientListener(connection, this);
+            cachedPool.submit(clientListener);
+
+            System.out.println("client accepted " + connection.getInetAddress().getHostName());
+
+        }
+    }
+
+    public void sendMessageTo(Socket clientSocket, String message) throws IOException {
+
+        PrintStream out = new PrintStream((clientSocket.getOutputStream()), true);
+        out.println(message);
 
     }
 
-    public void acceptClient() {
-
+    public void broadcast(Event event) {
+        broadcast(event.toString());
     }
 
+    public void broadcast(String message) {
 
-    public void sendMessageTo() {
+        for (Socket s : sockets) {
 
+            try {
+                PrintStream out = new PrintStream(s.getOutputStream());
+                out.println(message);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
     }
 
-
-    public void broadcast() {
-
-    }
 
     public void generateGameObjects() {
+
+        //asks gamefactory to do somethings
 
     }
 
