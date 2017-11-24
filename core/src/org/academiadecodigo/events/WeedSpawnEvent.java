@@ -12,7 +12,7 @@ public class WeedSpawnEvent extends Event {
     private int x;
     private int y;
 
-    public WeedSpawnEvent(ObjectType objectType, int objectLevel, int x , int y) {
+    public WeedSpawnEvent(ObjectType objectType, int objectLevel, int x, int y) {
         super(EventType.WEED_SPAWN);
         this.objectType = objectType;
         this.objectLevel = objectLevel;

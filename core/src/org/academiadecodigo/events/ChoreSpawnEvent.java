@@ -5,7 +5,7 @@ import org.academiadecodigo.client.ObjectType;
 /**
  * Created by codecadet on 23/11/17.
  */
-public class ChoreSpawnEvent extends Event{
+public class ChoreSpawnEvent extends Event {
 
     private ObjectType objectType;
     private int objectLevel;

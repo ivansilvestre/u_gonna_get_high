@@ -16,15 +16,13 @@ public abstract class GameObjects {
         this.posY = posY;
     }
 
-    public void collect(){
+    public void collect() {
 
     }
 
-    public void draw(){
+    public void draw() {
 
     }
-
-
 
 
 }

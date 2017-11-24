@@ -1,9 +1,7 @@
 package org.academiadecodigo.client.screens;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -45,6 +43,7 @@ public class Hud implements Disposable {
     private Label timer;
     private Label TIME;
     private Label player1;
+
     public Hud(SpriteBatch sb) {
         //define our tracking variables
 
@@ -76,7 +75,7 @@ public class Hud implements Disposable {
         p1_DopeLevel = new Label(String.format("%01d", p1_dope), new Label.LabelStyle(new BitmapFont(), Color.YELLOW));
         cenas_DopeLevel = new Label(String.format("", cenas_dope), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         player2 = new Label("PLAYER 2", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        timer = new Label(String.format("%03d",worldTimer), new Label.LabelStyle(new BitmapFont(), Color.RED));
+        timer = new Label(String.format("%03d", worldTimer), new Label.LabelStyle(new BitmapFont(), Color.RED));
         TIME = new Label("TIME", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         player1 = new Label("PLAYER 1", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 
@@ -101,18 +100,18 @@ public class Hud implements Disposable {
     }
 
 
-        public void update(float dt){
-            timeCount += dt;
-            if(timeCount >= 1){
-                if (worldTimer > 0) {
-                    worldTimer--;
-                } else {
-                    boolean timeUp = true;
-                }
-                timer.setText(String.format("%03d", worldTimer));
-                timeCount = 0;
+    public void update(float dt) {
+        timeCount += dt;
+        if (timeCount >= 1) {
+            if (worldTimer > 0) {
+                worldTimer--;
+            } else {
+                boolean timeUp = true;
             }
+            timer.setText(String.format("%03d", worldTimer));
+            timeCount = 0;
         }
+    }
 
     /*
             public static void addScore(int value){
@@ -124,6 +123,7 @@ public class Hud implements Disposable {
     public void dispose() {
         stage.dispose();
     }
+
     public void draw() {
 
     }

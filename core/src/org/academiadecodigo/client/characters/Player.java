@@ -45,7 +45,7 @@ public class Player extends Character {
             getSprite().setRotation(180);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-           moveLeft();
+            moveLeft();
             getSprite().setRotation(-90);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
@@ -81,7 +81,7 @@ public class Player extends Character {
             return;
         }
 
-        translate(-speed,0);
+        translate(-speed, 0);
         sendPosition();
     }
 
@@ -103,8 +103,6 @@ public class Player extends Character {
         return x <= Constants.LEFT_HOUSE_X || (x >= Constants.LEFT_HOUSE_X + Constants.HOUSE_WIDTH - 25 && x <= 200 && (y <= 330 || y >= 355)) ||
                 y <= Constants.HOUSE_Y || y >= Constants.HOUSE_Y + Constants.HOUSE_HEIGHT - 25 || x >= 325;
     }
-
-
 
 
     @Override

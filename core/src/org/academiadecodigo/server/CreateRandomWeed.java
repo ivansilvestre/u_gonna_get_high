@@ -3,8 +3,6 @@ package org.academiadecodigo.server;
 import org.academiadecodigo.Constants;
 import org.academiadecodigo.Utils;
 import org.academiadecodigo.client.ObjectType;
-import org.academiadecodigo.client.objects.ObjectFactory;
-import org.academiadecodigo.client.objects.Weed;
 import org.academiadecodigo.client.objects.WeedType;
 import org.academiadecodigo.events.WeedSpawnEvent;
 
