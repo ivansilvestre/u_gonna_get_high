@@ -33,17 +33,17 @@ public abstract class ObjectFactory {
 
     public static Weed createRandomWeed(float posX, float posY) {
 
-       double randNumber = Math.random();
+        double randNumber = Math.random();
 
-       if(randNumber<= 0.5){       //50%
-           return new Weed(WeedType.SKUNK,posX,posY);
-       }
+        if (randNumber <= 0.5) {       //50%
+            return new Weed(WeedType.SKUNK, posX, posY);
+        }
 
-       if(randNumber>=0.85){       //15%
-           return new Weed(WeedType.CINDERELA99,posX,posY);
-       }
-                                    //35%
-          return new Weed(WeedType.CRITICAL,posX,posY);
+        if (randNumber >= 0.85) {       //15%
+            return new Weed(WeedType.CINDERELA99, posX, posY);
+        }
+        //35%
+        return new Weed(WeedType.CRITICAL, posX, posY);
     }
 
 }

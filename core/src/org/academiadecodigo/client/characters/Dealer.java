@@ -30,7 +30,7 @@ public class Dealer extends Character{
     }
 
     @Override
-    void move() {
+    public void move() {
 
 
 
@@ -70,7 +70,7 @@ public class Dealer extends Character{
     }
 
     @Override
-    void dispose() {
+    public void dispose() {
 
     }
     public void translate(float y) {

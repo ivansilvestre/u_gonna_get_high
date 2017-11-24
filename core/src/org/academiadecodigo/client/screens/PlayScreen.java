@@ -11,14 +11,14 @@ import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import org.academiadecodigo.client.GameLogic;
 import org.academiadecodigo.client.characters.Dealer;
 import org.academiadecodigo.client.characters.Enemy;
 import org.academiadecodigo.client.characters.Player;
-
-
+import org.academiadecodigo.client.objects.Weed;
 
 /**
  * Created by codecadet on 23/11/17.
@@ -33,6 +33,7 @@ public class PlayScreen extends ScreenAdapter {
     TiledMap tiledMap;
     OrthographicCamera camera;
     TiledMapRenderer tiledMapRenderer;
+    private boolean newWeed;
 
     private Array<Rectangle> walls;
 
@@ -110,6 +111,16 @@ public class PlayScreen extends ScreenAdapter {
 
     @Override
     public void dispose() {
+
+    }
+
+    public void addActor(Actor actor) {
+        gameStage.addActor(actor);
+    }
+
+    public void newWeed() {
+
+
 
     }
 }

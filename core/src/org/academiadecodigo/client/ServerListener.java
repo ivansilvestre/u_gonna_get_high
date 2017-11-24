@@ -65,12 +65,17 @@ public class ServerListener implements Runnable {
 
     public void interpretMessage(String message) {
 
-        int[] arguments = Utils.argumentsToInt(message.split(" "));
+        Integer[] arguments = Utils.argumentsToInt(message.split(" "));
+
+        if(arguments.length < 1) {
+            return;
+        }
+
         EventType event = EventType.values()[(arguments[0])];
 
         switch (event) {
             case START:
-                // game.start();
+                 //game.start();
                 break;
 
             case PLAYER_ASSIGN:
@@ -83,6 +88,10 @@ public class ServerListener implements Runnable {
 
             case CHORE_SPAWN:
                 // game.spawnObject(type, x, y);
+                break;
+
+            case WEED_SPAWN:
+                game.spawnWeed(arguments[1], arguments[2], arguments[3]);
                 break;
 
             default:

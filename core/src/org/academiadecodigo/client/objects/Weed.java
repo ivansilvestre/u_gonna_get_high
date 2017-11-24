@@ -10,20 +10,34 @@ import com.badlogic.gdx.math.Rectangle;
  */
 public class Weed extends GameObjects {
 
-    private Sprite sprite;
-    private Rectangle bounds;
     private WeedType weedType;
+    private Rectangle rectangle;
 
 
     public Weed(WeedType weedType, float posX, float posY) {
 
-        super(posX, posY);
-        this.sprite = new Sprite(new Texture(Gdx.files.internal("weed.png")));
-        this.bounds = new Rectangle(sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight());
+        super(new Sprite(new Texture(Gdx.files.internal("baggreen.png"))));
         this.weedType = weedType;
+        getSprite().setX(posX);
+        getSprite().setY(posY);
+
+        rectangle = new Rectangle(getSprite().getX(), getSprite().getY(), 25, 25);
     }
 
     public WeedType getWeedType() {
         return weedType;
+    }
+
+    @Override
+    protected void move() {
+
+    }
+
+    @Override
+    protected void dispose() {
+    }
+
+    public Rectangle getRectangle() {
+        return rectangle;
     }
 }

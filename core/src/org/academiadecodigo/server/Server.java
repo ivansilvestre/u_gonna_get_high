@@ -1,17 +1,7 @@
 package org.academiadecodigo.server;
 
-import com.badlogic.gdx.utils.Timer;
-import org.academiadecodigo.Constants;
-import org.academiadecodigo.Utils;
-import org.academiadecodigo.client.ObjectType;
-import org.academiadecodigo.client.objects.Chore;
-import org.academiadecodigo.client.objects.ObjectFactory;
-import org.academiadecodigo.client.objects.Weed;
 import org.academiadecodigo.events.Event;
 import org.academiadecodigo.events.IdAssignEvent;
-import org.academiadecodigo.events.ChoreSpawnEvent;
-import org.academiadecodigo.events.WeedSpawnEvent;
-
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.ServerSocket;
@@ -44,9 +34,10 @@ public class Server {
             acceptClients();     //accepts 2 players
             CreateRandomChore createRandomChore = new CreateRandomChore(this);
             CreateRandomWeed createRandomWeed = new CreateRandomWeed(this);
-            new Thread(createRandomChore).start();
-            new Thread(createRandomWeed).start();
 
+            new Thread(createRandomChore).start();
+
+            new Thread(createRandomWeed).start();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -74,7 +65,6 @@ public class Server {
 
     public void sendMessageTo(Socket clientSocket, String message) throws IOException {
 
-        System.out.println(message);
 
         PrintStream out = new PrintStream((clientSocket.getOutputStream()), true);
         out.println(message);

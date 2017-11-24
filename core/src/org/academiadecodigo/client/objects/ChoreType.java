@@ -1,7 +1,5 @@
 package org.academiadecodigo.client.objects;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 /**
@@ -28,8 +26,8 @@ public enum ChoreType {
         return values()[(int) (Math.random() * values().length)];
     }
 
-    public static ChoreType[] getlowChores(){
-        return new ChoreType[]{ CLEAN_ROOM, FIND_BROOM, CLEAN_TABLE };
+    public static ChoreType[] getlowChores() {
+        return new ChoreType[]{CLEAN_ROOM, FIND_BROOM, CLEAN_TABLE};
     }
 
     public Sprite getSprite() {

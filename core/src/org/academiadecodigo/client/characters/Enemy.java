@@ -22,12 +22,12 @@ public class Enemy extends Character {
     }
 
     @Override
-    void move() {
+    public void move() {
 
     }
 
     @Override
-    void dispose() {
+    public void dispose() {
 
     }
 }
