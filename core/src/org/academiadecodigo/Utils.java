@@ -15,7 +15,6 @@ public class Utils {
 
         for (int i = 0; i < arguments.length; i++) {
 
-            System.out.println("Argument" + i + " -- " + arguments[i]);
             if(arguments[i].isEmpty()) continue;
              result.add(Integer.parseInt(arguments[i]));
 

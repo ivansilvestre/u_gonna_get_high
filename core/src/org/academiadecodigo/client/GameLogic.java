@@ -4,16 +4,12 @@ package org.academiadecodigo.client;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import org.academiadecodigo.client.characters.Dealear;
 import org.academiadecodigo.client.characters.Enemy;
 import org.academiadecodigo.client.characters.Player;
 import org.academiadecodigo.client.screens.Hud;
-import org.academiadecodigo.client.screens.Placard;
 import org.academiadecodigo.client.objects.Weed;
 import org.academiadecodigo.client.objects.WeedType;
 import org.academiadecodigo.client.screens.PlayScreen;
@@ -33,7 +29,6 @@ public class GameLogic extends Game {
     private Player player;
     private Enemy enemy;
     private int playerId;
-    private Placard placard;
     private Hud hud;
     private ServerListener serverListener;
 
@@ -54,7 +49,9 @@ public class GameLogic extends Game {
         hud = new Hud(batch);
 
         this.player = new Player(this);
+
         enemy = new Enemy();
+
         playScreen = new PlayScreen(player, enemy);
 
         serverListener = new ServerListener(this);
@@ -144,7 +141,6 @@ public class GameLogic extends Game {
         }
 
 
-        // TODO move second player
         enemy.getSprite().setX(950 - x);
         enemy.getSprite().setY(y);
     }

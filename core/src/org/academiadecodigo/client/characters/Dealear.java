@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 /**
  * Created by Someone who is not me on 24/11/17.
  */
-public class Dealear extends Character{
+public class Dealear extends Character {
 
     private int speed;
     private SpriteBatch batch;

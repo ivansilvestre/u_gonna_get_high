@@ -2,7 +2,6 @@ package org.academiadecodigo.server;
 
 import org.academiadecodigo.events.Event;
 import org.academiadecodigo.events.IdAssignEvent;
-
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.ServerSocket;
@@ -35,8 +34,9 @@ public class Server {
             CreateRandomChore createRandomChore = new CreateRandomChore(this);
             CreateRandomWeed createRandomWeed = new CreateRandomWeed(this);
             acceptClients();     //accepts 2 players
-            new Thread(createRandomChore).start();
 
+
+            new Thread(createRandomChore).start();
 
             new Thread(createRandomWeed).start();
 
@@ -66,7 +66,6 @@ public class Server {
 
     public void sendMessageTo(Socket clientSocket, String message) throws IOException {
 
-        System.out.println(message);
 
         PrintStream out = new PrintStream((clientSocket.getOutputStream()), true);
         out.println(message);

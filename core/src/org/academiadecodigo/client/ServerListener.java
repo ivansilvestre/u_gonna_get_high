@@ -65,7 +65,6 @@ public class ServerListener implements Runnable {
 
     public void interpretMessage(String message) {
 
-        System.out.println(message);
         Integer[] arguments = Utils.argumentsToInt(message.split(" "));
 
         if(arguments.length < 1) {
@@ -76,7 +75,7 @@ public class ServerListener implements Runnable {
 
         switch (event) {
             case START:
-                // game.start();
+                 //game.start();
                 break;
 
             case PLAYER_ASSIGN:

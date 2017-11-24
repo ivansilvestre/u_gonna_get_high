@@ -16,15 +16,13 @@ public abstract class GameObjects extends Character{
         super(sprite);
     }
 
-    public void collect(){
+    public void collect() {
 
     }
 
-    public void draw(){
+    public void draw() {
 
     }
-
-
 
 
 }
