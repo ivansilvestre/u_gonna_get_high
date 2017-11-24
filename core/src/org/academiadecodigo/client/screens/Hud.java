@@ -23,6 +23,7 @@ public class Hud implements Disposable {
     private int p2_dope = 100;
 
 
+
     //Scene2D.ui Stage and its own Viewport for HUD
     public Stage stage;
     private Viewport viewport;
