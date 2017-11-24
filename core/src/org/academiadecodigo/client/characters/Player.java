@@ -3,25 +3,25 @@ package org.academiadecodigo.client.characters;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import org.academiadecodigo.Constants;
+import org.academiadecodigo.client.GameLogic;
 
 
 public class Player extends Character {
 
     private float speed;
 
-    private boolean canMove;
+    private GameLogic game;
 
-    public Player() {
+    public Player(GameLogic game) {
 
         super(new Sprite(new Texture(Gdx.files.internal("PlayerTwo.png"))));
 
+        this.game = game;
         speed = 2f;
         initialPositioning();
 
-        canMove = true;
 
     }
 
@@ -34,9 +34,6 @@ public class Player extends Character {
     @Override
     public void move() {
 
-        if(!canMove){
-            return;
-        }
 
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
             moveDown();
@@ -65,6 +62,7 @@ public class Player extends Character {
         }
 
         translate(0, speed);
+        sendPosition();
     }
 
     private void moveDown() {
@@ -74,7 +72,9 @@ public class Player extends Character {
         }
 
         translate(0, -speed);
+        sendPosition();
     }
+
 
     private void moveLeft() {
         if (boundarieCollision(getSprite().getX() - speed, getSprite().getY())) {
@@ -82,6 +82,7 @@ public class Player extends Character {
         }
 
         translate(-speed,0);
+        sendPosition();
     }
 
     private void moveRight() {
@@ -90,6 +91,11 @@ public class Player extends Character {
         }
 
         translate(speed, 0);
+        sendPosition();
+    }
+
+    private void sendPosition() {
+        game.sendPosition();
     }
 
     private boolean boundarieCollision(float x, float y) {
@@ -99,15 +105,7 @@ public class Player extends Character {
     }
 
 
-    @Override
-    public void draw(Batch batch, float parentAlpha) {
 
-        super.draw(batch, parentAlpha);
-
-        batch.draw(getSprite(), getSprite().getX(), getSprite().getY(), 25, 25, getSprite().getRegionWidth() * 0.08f, getSprite().getRegionHeight() * 0.08f,
-                getSprite().getScaleX(), getSprite().getScaleY(), getSprite().getRotation());
-        //getBounds().setSize(getSprite().getWidth(), getSprite().getHeight());
-    }
 
     @Override
     public void act(float delta) {

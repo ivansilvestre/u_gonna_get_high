@@ -18,6 +18,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import org.academiadecodigo.client.GameLogic;
+import org.academiadecodigo.client.characters.Enemy;
 import org.academiadecodigo.client.characters.Player;
 
 
@@ -46,7 +47,7 @@ public class PlayScreen extends ScreenAdapter {
     private TextureMapObject object;
 
 
-    public PlayScreen(Player player) {
+    public PlayScreen(Player player, Enemy enemy) {
 
         this.walls = new Array<>();
 
@@ -62,6 +63,7 @@ public class PlayScreen extends ScreenAdapter {
         // Gdx.input.setInputProcessor(this);
         //player.setCamera(camera);
         gameStage.addActor(player);
+        gameStage.addActor(enemy);
         tiledMapRenderer.setView(camera);
 
 
