@@ -1,5 +1,6 @@
 package org.academiadecodigo.server;
 
+import org.academiadecodigo.client.SoundEffects;
 import org.academiadecodigo.events.Event;
 import org.academiadecodigo.events.IdAssignEvent;
 
@@ -34,7 +35,6 @@ public class Server {
             serverSocket = new ServerSocket(PORT);
 
             acceptClients();     //accepts 2 players
-
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -10,25 +10,25 @@ import com.badlogic.gdx.audio.Sound;
  */
 public class SoundEffects {
 
-    private Music mainSound;
+    public static Music mainSound;
 
-    private Sound smokeWeed;
-    private Sound cops;
-    private Sound catchItem;
-    private Sound smokeWeedEveryday;
-    private Sound fWhereIsMyDealer;
-    private Sound gettingSober;
-    private Sound yeah;
+    public static Sound smokeWeed;
+    public static Sound cops;
+    public static Sound catchItem;
+    public static Sound smokeWeedEveryday;
+    public static Sound fWhereIsMyDealer;
+    public static Sound gettingSober;
+    public static Sound yeah;
 
 
-    public void playMusic() {
+    public static void playMusic() {
 
         mainSound = Gdx.audio.newMusic(Gdx.files.internal("sound/becauseIGotHigh.mp3"));
-        //  mainSound.play();
-        // mainSound.setLooping(true);
+        mainSound.play();
+        mainSound.setLooping(true);
     }
 
-    public void playSound() {
+    public static void playSound() {
 
         //WITH WEED
         smokeWeed = Gdx.audio.newSound(Gdx.files.internal("sound/inspire.mp3"));
@@ -36,6 +36,7 @@ public class SoundEffects {
         smokeWeedEveryday = Gdx.audio.newSound(Gdx.files.internal("sound/smokeWeedEveryDay.mp3"));
         //smokeWeedEveryday.play();
         yeah = Gdx.audio.newSound(Gdx.files.internal("sound/yeah.mp3"));
+        // yeah.setVolume(2,2);
         //yeah.play();
 
         //MISSING WEED
