@@ -1,23 +1,25 @@
 package org.academiadecodigo.client;
 
 import org.academiadecodigo.Utils;
+import org.academiadecodigo.events.Event;
 import org.academiadecodigo.events.EventType;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.net.Socket;
 
 /**
  * Created by codecadet on 23/11/17.
  */
-public class ServerListener implements Runnable{
+public class ServerListener implements Runnable {
 
     private final String SERVER_IP = "localhost";
     private Socket socket;
     private GameLogic game;
 
-    private ServerListener(GameLogic game) {
+    public ServerListener(GameLogic game) {
         this.game = game;
     }
 
@@ -39,7 +41,7 @@ public class ServerListener implements Runnable{
 
     }
 
-    public void listen(){
+    public void listen() {
 
         try {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -61,7 +63,7 @@ public class ServerListener implements Runnable{
 
     }
 
-    public void interpretMessage(String message){
+    public void interpretMessage(String message) {
 
         int[] arguments = Utils.argumentsToInt(message.split(" "));
         EventType event = EventType.values()[(arguments[0])];
@@ -85,6 +87,17 @@ public class ServerListener implements Runnable{
 
             default:
                 System.out.println("Unknown event");
+        }
+    }
+
+    public void sendMessage(Event event) {
+
+        try {
+            PrintStream out = new PrintStream((socket.getOutputStream()), true);
+            out.println(event.toString());
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

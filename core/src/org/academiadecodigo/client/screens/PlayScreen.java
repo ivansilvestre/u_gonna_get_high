@@ -1,29 +1,34 @@
 package org.academiadecodigo.client.screens;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapObjects;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
+import com.badlogic.gdx.maps.objects.TextureMapObject;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.utils.viewport.*;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Array;
 import org.academiadecodigo.client.GameLogic;
+import org.academiadecodigo.client.characters.Enemy;
+import org.academiadecodigo.client.characters.Player;
+
 
 
 /**
  * Created by codecadet on 23/11/17.
  */
-public class PlayScreen implements Screen {
-
-    private GameLogic game;
-    private Viewport gamePort;
-    private int noZaxis = 0;
+public class PlayScreen extends ScreenAdapter {
 
     private TmxMapLoader maploader;
     private TiledMap map;
@@ -34,31 +39,51 @@ public class PlayScreen implements Screen {
     OrthographicCamera camera;
     TiledMapRenderer tiledMapRenderer;
 
-    public PlayScreen(GameLogic game) {
+    private Array<Rectangle> walls;
 
-        this.game = game;
+
+    private Stage gameStage;
+
+    private Player player;
+
+    private TextureMapObject object;
+
+
+    public PlayScreen(Player player, Enemy enemy) {
+
+        this.walls = new Array<Rectangle>();
+
+        this.player = player;
+        gameStage = new Stage();
 
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, game.WIDTH, game.HEIGHT);
+        camera.setToOrtho(false, GameLogic.WIDTH, GameLogic.HEIGHT);
         camera.update();
+
         tiledMap = new TmxMapLoader().load("mapa_principal.tmx");
         tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
         // Gdx.input.setInputProcessor(this);
+        //player.setCamera(camera);
+        gameStage.addActor(player);
+        gameStage.addActor(enemy);
+        tiledMapRenderer.setView(camera);
+
 
     }
+
 
     @Override
     public void render(float delta) {
+
+        gameStage.act();
+
         Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         camera.update();
-        tiledMapRenderer.setView(camera);
+
         tiledMapRenderer.render();
 
-    }
-
-    public void update(float dt) {
+        gameStage.draw();
     }
 
     @Override

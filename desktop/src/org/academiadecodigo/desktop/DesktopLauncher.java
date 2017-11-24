@@ -6,6 +6,7 @@ import org.academiadecodigo.client.GameLogic;
 
 public class DesktopLauncher {
     public static void main(String[] arg) {
+
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.title = "Stoners";
         config.width = 1000;

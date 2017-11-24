@@ -1,5 +1,7 @@
 package org.academiadecodigo;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  * Created by codecadet on 24/11/17.
  */
@@ -16,5 +18,9 @@ public class Utils {
         }
 
         return result;
+    }
+
+    public static int generateRandomInt(int min, int max) {
+        return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
 }

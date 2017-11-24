@@ -20,7 +20,7 @@ public enum ChoreType {
 
     ChoreType(float choreValues, String path) {
         this.choreValues = choreValues;
-        this.sprite = new Sprite(new Texture(Gdx.files.internal(path + ".png")));
+        //this.sprite = new Sprite(new Texture(Gdx.files.internal(path + ".png")));
     }
 
 
@@ -28,6 +28,9 @@ public enum ChoreType {
         return choreValues;
     }
 
+    public static ChoreType[] getlowChores(){
+        return new ChoreType[]{ CLEAN_ROOM, FIND_BROOM, CLEAN_TABLE };
+    }
 
     public Sprite getSprite() {
         return sprite;

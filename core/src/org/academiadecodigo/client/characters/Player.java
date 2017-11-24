@@ -4,27 +4,30 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import org.academiadecodigo.Constants;
+import org.academiadecodigo.client.GameLogic;
 
 
 public class Player extends Character {
 
-    private int speed;
-    private SpriteBatch batch;
+    private float speed;
 
+    private GameLogic game;
 
-    public Player(SpriteBatch batch) {
+    public Player(GameLogic game) {
 
-        super(new Sprite(new Texture(Gdx.files.internal("afro.png"))));
+        super(new Sprite(new Texture(Gdx.files.internal("PlayerTwo.png"))));
 
-        this.batch = batch;
-        speed = 2;
+        this.game = game;
+        speed = 2f;
         initialPositioning();
+
 
     }
 
     private void initialPositioning() {
-        getSprite().setPosition(0, (Gdx.graphics.getHeight() / 2) - getSprite().getHeight() / 2);
+
+        getSprite().setPosition(10, 100);
     }
 
 
@@ -33,25 +36,81 @@ public class Player extends Character {
 
 
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            translate(0, -speed);
+            moveDown();
+            getSprite().setRotation(0);
         }
 
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            translate(0, speed);
+            moveUp();
+            getSprite().setRotation(180);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            translate(-speed, 0);
+           moveLeft();
+            getSprite().setRotation(-90);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            translate(speed, 0);
+            moveRight();
+            getSprite().setRotation(90);
         }
 
     }
 
-    @Override
-    public void draw() {
+    private void moveUp() {
 
-        this.batch.draw(getSprite(), getSprite().getX(), getSprite().getY());
+        if (boundarieCollision(getSprite().getX(), getSprite().getY() + speed)) {
+            return;
+        }
+
+        translate(0, speed);
+        sendPosition();
+    }
+
+    private void moveDown() {
+
+        if (boundarieCollision(getSprite().getX(), getSprite().getY() - speed)) {
+            return;
+        }
+
+        translate(0, -speed);
+        sendPosition();
+    }
+
+
+    private void moveLeft() {
+        if (boundarieCollision(getSprite().getX() - speed, getSprite().getY())) {
+            return;
+        }
+
+        translate(-speed,0);
+        sendPosition();
+    }
+
+    private void moveRight() {
+        if (boundarieCollision(getSprite().getX() + speed, getSprite().getY())) {
+            return;
+        }
+
+        translate(speed, 0);
+        sendPosition();
+    }
+
+    private void sendPosition() {
+        game.sendPosition();
+    }
+
+    private boolean boundarieCollision(float x, float y) {
+
+        return x <= Constants.LEFT_HOUSE_X || (x >= Constants.LEFT_HOUSE_X + Constants.HOUSE_WIDTH - 25 && x <= 200 && (y <= 330 || y >= 355)) ||
+                y <= Constants.HOUSE_Y || y >= Constants.HOUSE_Y + Constants.HOUSE_HEIGHT - 25 || x >= 325;
+    }
+
+
+
+
+    @Override
+    public void act(float delta) {
+        super.act(delta);
+        move();
     }
 
     @Override
@@ -62,7 +121,8 @@ public class Player extends Character {
     public void translate(float x, float y) {
 
         getSprite().setPosition(getSprite().getX() + x, getSprite().getY() + y);
-        getBounds().setPosition(getSprite().getX(), getSprite().getY());
+        //getBounds().setPosition(getSprite().getX(), getSprite().getY());
 
     }
+
 }
