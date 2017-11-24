@@ -24,6 +24,7 @@ public class Hud implements Disposable {
     private int p2_dope = 100;
 
 
+
     //Scene2D.ui Stage and its own Viewport for HUD
     public Stage stage;
     private Viewport viewport;
@@ -150,5 +151,21 @@ public class Hud implements Disposable {
 
     public void setP2_score(int p2_score) {
         this.p2_score = p2_score;
+    }
+
+    public int getP1_dope(){
+        return p1_dope;
+    }
+
+    public  int getP2_dope(){
+        return p2_dope;
+    }
+
+    public int getP1_score(){
+        return p1_score;
+    }
+
+    public  int getP2_score(){
+        return p2_score;
     }
 }

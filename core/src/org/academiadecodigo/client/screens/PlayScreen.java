@@ -1,7 +1,6 @@
 package org.academiadecodigo.client.screens;
 
 import com.badlogic.gdx.Gdx;
-
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -16,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import org.academiadecodigo.client.GameLogic;
+import org.academiadecodigo.client.characters.Dealer;
 import org.academiadecodigo.client.characters.Enemy;
 import org.academiadecodigo.client.characters.Player;
 import org.academiadecodigo.client.objects.Weed;
@@ -45,7 +45,7 @@ public class PlayScreen extends ScreenAdapter {
     private TextureMapObject object;
 
 
-    public PlayScreen(Player player, Enemy enemy) {
+    public PlayScreen(Player player, Enemy enemy, Dealer dealer) {
 
         this.walls = new Array<Rectangle>();
 
@@ -62,6 +62,7 @@ public class PlayScreen extends ScreenAdapter {
         //player.setCamera(camera);
         gameStage.addActor(player);
         gameStage.addActor(enemy);
+        gameStage.addActor(dealer);
         tiledMapRenderer.setView(camera);
 
 

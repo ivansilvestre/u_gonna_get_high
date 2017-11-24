@@ -3,10 +3,10 @@ package org.academiadecodigo.client;
 
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import org.academiadecodigo.client.characters.Dealer;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Rectangle;
-import org.academiadecodigo.client.characters.Dealear;
 import org.academiadecodigo.client.characters.Enemy;
 import org.academiadecodigo.client.characters.Player;
 import org.academiadecodigo.client.objects.Chore;
@@ -29,6 +29,7 @@ public class GameLogic extends Game {
 
     private SpriteBatch batch;
     private Player player;
+    private Dealer dealer;
     private Enemy enemy;
     private int playerId;
     private Hud hud;
@@ -44,13 +45,12 @@ public class GameLogic extends Game {
 
     public GameLogic() {
 
-        weeds = new LinkedList<>();
-        enemyWeeds = new LinkedList<>();
-
-        chores = new LinkedList<>();
-        enemyChores = new LinkedList<>();
+        chores = new LinkedList<Chore>();
+        enemyChores = new LinkedList<Chore>();
 
         started = false;
+        weeds = new LinkedList<Weed>();
+        enemyWeeds = new LinkedList<Weed>();
     }
 
     @Override
@@ -61,10 +61,10 @@ public class GameLogic extends Game {
         hud = new Hud(batch);
 
         this.player = new Player(this);
+        this.dealer = new Dealer();
 
         enemy = new Enemy();
-
-        playScreen = new PlayScreen(player, enemy);
+        playScreen = new PlayScreen(player, enemy, dealer);
 
         serverListener = new ServerListener(this);
 
@@ -91,6 +91,8 @@ public class GameLogic extends Game {
 
             if (w.getSprite().getX() <= player.getSprite().getX() && w.getSprite().getX() + w.getSprite().getWidth() + 10 >= player.getSprite().getX() + 10 &&
                     w.getSprite().getY() <= player.getSprite().getY() && w.getSprite().getY() + 15 >= player.getSprite().getY()) {
+
+                hud.setP1_dope(hud.getP1_dope()+ w.getWeedType().getIntensity());
 
                 w.remove();
                 SoundEffects.playWeedPickUp();
@@ -122,7 +124,12 @@ public class GameLogic extends Game {
             if ( 975 - w.getSprite().getX() <= enemy.getSprite().getX() && 975 - w.getSprite().getX() + w.getSprite().getWidth() + 10 >= enemy.getSprite().getX() + 10 &&
                     w.getSprite().getY() <= enemy.getSprite().getY() && w.getSprite().getY() + 15 >= enemy.getSprite().getY()) {
 
+<<<<<<< HEAD
                 System.out.println();
+=======
+                hud.setP2_dope(hud.getP2_dope()+w.getWeedType().getIntensity());
+
+>>>>>>> 714bebc688218482e9ac99f34b8d0fdfcbe44481
                 w.remove();
                 SoundEffects.playWeedPickUp();
                 iterator.remove();
@@ -180,7 +187,7 @@ public class GameLogic extends Game {
         enemy.getSprite().setY(y);
     }
 
-    public void spawnWeed(int weedType, int x, int y) {
+    public void spawnWeed(final int weedType, final int x, final int y) {
 
         Gdx.app.postRunnable(new Runnable() {
             public void run() {

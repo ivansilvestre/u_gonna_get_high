@@ -33,11 +33,10 @@ public class Server {
     public void init() {
         try {
             serverSocket = new ServerSocket(PORT);
+            acceptClients();     //accepts 2 players
             CreateRandomChore createRandomChore = new CreateRandomChore(this);
             CreateRandomWeed createRandomWeed = new CreateRandomWeed(this);
-            acceptClients();     //accepts 2 players
             broadcast(new StartEvent());
-
 
             new Thread(createRandomChore).start();
 
@@ -94,13 +93,5 @@ public class Server {
         }
     }
 
-
-    public void generateChore() {
-
-    }
-
-    public void generateWeed() {
-
-    }
 
 }
