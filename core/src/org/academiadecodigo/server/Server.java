@@ -35,6 +35,7 @@ public class Server {
 
             acceptClients();     //accepts 2 players
 
+
         } catch (IOException e) {
             e.printStackTrace();
         }
