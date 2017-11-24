@@ -92,7 +92,12 @@ public class GameLogic extends Game {
             if (w.getSprite().getX() <= player.getSprite().getX() && w.getSprite().getX() + w.getSprite().getWidth() + 10 >= player.getSprite().getX() + 10 &&
                     w.getSprite().getY() <= player.getSprite().getY() && w.getSprite().getY() + 15 >= player.getSprite().getY()) {
 
-                hud.setP1_dope(hud.getP1_dope()+ w.getWeedType().getIntensity());
+                if (hud.getP1_score() - 10 < 0) {
+                    continue;
+                }
+
+                hud.setP1_dope(hud.getP1_dope() + w.getWeedType().getIntensity());
+                hud.setP1_score(hud.getP1_score() - 10);
 
                 w.remove();
                 SoundEffects.playWeedPickUp();
@@ -110,6 +115,7 @@ public class GameLogic extends Game {
                     w.getSprite().getY() <= player.getSprite().getY() && w.getSprite().getY() + 15 >= player.getSprite().getY()) {
 
                 w.remove();
+                hud.setP1_score(hud.getP1_score() + w.getChoreType().getValue() * 10);
 
                 choreIterator.remove();
 

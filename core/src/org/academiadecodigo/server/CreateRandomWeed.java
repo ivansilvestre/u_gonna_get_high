@@ -33,7 +33,7 @@ public class CreateRandomWeed implements Runnable {
 
             server.broadcast(new WeedSpawnEvent(randomWeed.ordinal(), randomWeedX, randomWeedY));
             try {
-                Thread.sleep(10000);
+                Thread.sleep(Utils.generateRandomInt(8000, 10000));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
