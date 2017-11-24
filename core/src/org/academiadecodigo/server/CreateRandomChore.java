@@ -27,7 +27,7 @@ public class CreateRandomChore implements Runnable {
             int randomChoreY;
 
 
-            randomChoreX = Utils.generateRandomInt(Constants.LEFT_HOUSE_X, Constants.HOUSE_WIDTH + Constants.LEFT_HOUSE_X);
+            randomChoreX = Utils.generateRandomInt(Constants.LEFT_HOUSE_X, Constants.HOUSE_WIDTH + Constants.LEFT_HOUSE_X - 100);
             randomChoreY = Utils.generateRandomInt(Constants.HOUSE_Y, Constants.HOUSE_HEIGHT + Constants.HOUSE_Y);
 
 
@@ -37,7 +37,7 @@ public class CreateRandomChore implements Runnable {
 
             server.broadcast(new ChoreSpawnEvent(ObjectType.CHORE, randomChore.ordinal(), randomChoreX, randomChoreY));
             try {
-                Thread.sleep(10000);
+                Thread.sleep(Utils.generateRandomInt(8000, 10000));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

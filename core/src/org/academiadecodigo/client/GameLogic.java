@@ -9,6 +9,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.academiadecodigo.client.characters.Enemy;
 import org.academiadecodigo.client.characters.Player;
+import org.academiadecodigo.client.objects.Chore;
+import org.academiadecodigo.client.objects.ChoreType;
 import org.academiadecodigo.client.screens.Hud;
 import org.academiadecodigo.client.objects.Weed;
 import org.academiadecodigo.client.objects.WeedType;
@@ -36,8 +38,17 @@ public class GameLogic extends Game {
     private List<Weed> weeds;
     private List<Weed> enemyWeeds;
 
+    private List<Chore> chores;
+    private List<Chore> enemyChores;
+
+    public static boolean started;
+
     public GameLogic() {
 
+        chores = new LinkedList<Chore>();
+        enemyChores = new LinkedList<Chore>();
+
+        started = false;
         weeds = new LinkedList<Weed>();
         enemyWeeds = new LinkedList<Weed>();
     }
@@ -63,7 +74,15 @@ public class GameLogic extends Game {
 
     }
 
-    private void checkWeedCollisions() {
+    public void start() {
+        started = true;
+    }
+
+    public static boolean isStarted() {
+        return started;
+    }
+
+    private void checkCollisions() {
 
         ListIterator<Weed> iterator = weeds.listIterator();
         while (iterator.hasNext()) {
@@ -73,7 +92,12 @@ public class GameLogic extends Game {
             if (w.getSprite().getX() <= player.getSprite().getX() && w.getSprite().getX() + w.getSprite().getWidth() + 10 >= player.getSprite().getX() + 10 &&
                     w.getSprite().getY() <= player.getSprite().getY() && w.getSprite().getY() + 15 >= player.getSprite().getY()) {
 
-                hud.setP1_dope(hud.getP1_dope()+ w.getWeedType().getIntensity());
+                if (hud.getP1_score() - 10 < 0) {
+                    continue;
+                }
+
+                hud.setP1_dope(hud.getP1_dope() + w.getWeedType().getIntensity());
+                hud.setP1_score(hud.getP1_score() - 10);
 
                 w.remove();
                 SoundEffects.playWeedPickUp();
@@ -82,30 +106,49 @@ public class GameLogic extends Game {
             }
         }
 
-        iterator = enemyWeeds.listIterator();
+        ListIterator<Chore> choreIterator = chores.listIterator();
+        while (choreIterator.hasNext()) {
+
+            Chore w = choreIterator.next();
+
+            if (w.getSprite().getX() <= player.getSprite().getX() && w.getSprite().getX() + w.getSprite().getWidth() + 10 >= player.getSprite().getX() + 10 &&
+                    w.getSprite().getY() <= player.getSprite().getY() && w.getSprite().getY() + 15 >= player.getSprite().getY()) {
+
+                w.remove();
+                hud.setP1_score(hud.getP1_score() + w.getChoreType().getValue() * 10);
+
+                choreIterator.remove();
+
+            }
+        }
+        /*iterator = enemyWeeds.listIterator();
 
         while (iterator.hasNext()) {
 
             Weed w = iterator.next();
 
-            if (w.getSprite().getX() <= enemy.getSprite().getX() && w.getSprite().getX() + w.getSprite().getWidth() + 10 >= enemy.getSprite().getX() + 10 &&
+            if ( 975 - w.getSprite().getX() <= enemy.getSprite().getX() && 975 - w.getSprite().getX() + w.getSprite().getWidth() + 10 >= enemy.getSprite().getX() + 10 &&
                     w.getSprite().getY() <= enemy.getSprite().getY() && w.getSprite().getY() + 15 >= enemy.getSprite().getY()) {
 
+<<<<<<< HEAD
+                System.out.println();
+=======
                 hud.setP2_dope(hud.getP2_dope()+w.getWeedType().getIntensity());
 
+>>>>>>> 714bebc688218482e9ac99f34b8d0fdfcbe44481
                 w.remove();
                 SoundEffects.playWeedPickUp();
                 iterator.remove();
 
             }
-        }
+        }*/
 
     }
 
     @Override
     public void render() {
 
-        checkWeedCollisions();
+        checkCollisions();
 
         //updates
         // drawing
@@ -171,7 +214,23 @@ public class GameLogic extends Game {
 
     }
 
-    public List<Weed> getWeeds() {
-        return weeds;
+    public void spawnObject(Integer taskType, Integer x, Integer y) {
+
+        Gdx.app.postRunnable(new Runnable() {
+            public void run() {
+                ChoreType type = ChoreType.values()[taskType];
+                Chore chore = new Chore(type, x, y);
+                chores.add(chore);
+
+                playScreen.addActor(chore);
+
+                Chore enemyChore = new Chore(type, 980 - x, y);
+                enemyChores.add(enemyChore);
+
+                playScreen.addActor(enemyChore);
+
+            }
+        });
     }
+
 }

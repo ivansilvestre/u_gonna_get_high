@@ -13,10 +13,10 @@ public enum ChoreType {
     CLEAN_TABLE(1, "clean_table"),
     CLEAN_TOILET(5, "clean_toilet");
 
-    private float choreValues;
+    private int choreValues;
     private Sprite sprite;
 
-    ChoreType(float choreValues, String path) {
+    ChoreType(int choreValues, String path) {
         this.choreValues = choreValues;
         //this.sprite = new Sprite(new Texture(Gdx.files.internal(path + ".png")));
     }
@@ -32,5 +32,9 @@ public enum ChoreType {
 
     public Sprite getSprite() {
         return sprite;
+    }
+
+    public int getValue() {
+        return choreValues;
     }
 }

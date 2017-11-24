@@ -12,11 +12,19 @@ public abstract class Character extends Actor {
 
     private Sprite sprite;
     private Rectangle bounds;
+    private float mult;
+
+    public Character(Sprite sprite, float scale) {
+        super();
+        this.sprite = sprite;
+        mult = scale;
+    }
 
     public Character(Sprite sprite) {
 
         super();
         this.sprite = sprite;
+        mult = 0.08f;
     }
 
     protected abstract void move();
@@ -27,7 +35,7 @@ public abstract class Character extends Actor {
 
         super.draw(batch, parentAlpha);
 
-        batch.draw(getSprite(), getSprite().getX(), getSprite().getY(), 25, 25, getSprite().getRegionWidth() * 0.08f, getSprite().getRegionHeight() * 0.08f,
+        batch.draw(getSprite(), getSprite().getX(), getSprite().getY(), 25, 25, getSprite().getRegionWidth() * mult, getSprite().getRegionHeight() * mult,
                 getSprite().getScaleX(), getSprite().getScaleY(), getSprite().getRotation());
     }
 
