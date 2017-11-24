@@ -8,8 +8,8 @@ import org.academiadecodigo.server.Server;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 
-		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		new LwjglApplication(new GameLogic(), config);
+		/*LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		new LwjglApplication(new GameLogic(), config);*/
 
 		Server server = new Server();
 		server.init();
