@@ -4,6 +4,8 @@ package org.academiadecodigo.client;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import org.academiadecodigo.client.characters.Player;
 import org.academiadecodigo.client.screens.PlayScreen;
@@ -26,15 +28,12 @@ public class GameLogic extends Game {
 
         batch = new SpriteBatch();
 
-        playScreen = new PlayScreen(this);
-        this.player = new Player(batch);
+        this.player = new Player();
+        playScreen = new PlayScreen(player);
     }
 
     @Override
     public void render() {
-
-        Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         //updates
         // drawing
@@ -42,11 +41,14 @@ public class GameLogic extends Game {
         playScreen.render(0);
         //////////////////////////////////////////////////updates
 
-        player.move();
+
+
+
+
+
+
 
         // drawing
-        player.draw();
-
         batch.end();
     }
 
